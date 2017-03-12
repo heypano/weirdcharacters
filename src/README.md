@@ -1,567 +1,258 @@
-# Backbone.js + Express.js SPA boilerplate
+# React Redux Universal Hot Example
 
-This project is supposed to be a *starter kit* helping the community build Single Page Application architectures based on Backbone.js and Express.js frameworks.
+[![build status](https://img.shields.io/travis/erikras/react-redux-universal-hot-example/master.svg?style=flat-square)](https://travis-ci.org/erikras/react-redux-universal-hot-example)
+[![Dependency Status](https://david-dm.org/erikras/react-redux-universal-hot-example.svg?style=flat-square)](https://david-dm.org/erikras/react-redux-universal-hot-example)
+[![devDependency Status](https://david-dm.org/erikras/react-redux-universal-hot-example/dev-status.svg?style=flat-square)](https://david-dm.org/erikras/react-redux-universal-hot-example#info=devDependencies)
+[![react-redux-universal channel on discord](https://img.shields.io/badge/discord-react--redux--universal%40reactiflux-brightgreen.svg?style=flat-square)](https://discord.gg/0ZcbPKXt5bZZb1Ko)
+[![Demo on Heroku](https://img.shields.io/badge/demo-heroku-brightgreen.svg?style=flat-square)](https://react-redux.herokuapp.com)
+[![PayPal donate button](https://img.shields.io/badge/donate-paypal-brightgreen.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2LK57ZQ9YRMN)
 
-A Pragmatic approach is key. The simplest implementation possible, just to show the way, not a finalized application. It covers aspects of front-end design, as well as open API.
+---
 
-You are the one, who can help project to grow. Join now and contribute, your help is much appreciated.
+## About
 
-NOTE: It is still in **progress**. If you would like to contribute, please join the discussion/implementation of currently opened [issues](https://github.com/alexanderbeletsky/backbone-express-spa/issues).
+This is a starter boilerplate app I've put together using the following technologies:
 
-## Contents
+* ~~Isomorphic~~ [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) rendering
+* Both client and server make calls to load data from separate API server
+* [React](https://github.com/facebook/react)
+* [React Router](https://github.com/rackt/react-router)
+* [Express](http://expressjs.com)
+* [Babel](http://babeljs.io) for ES6 and ES7 magic
+* [Webpack](http://webpack.github.io) for bundling
+* [Webpack Dev Middleware](http://webpack.github.io/docs/webpack-dev-middleware.html)
+* [Webpack Hot Middleware](https://github.com/glenjamin/webpack-hot-middleware)
+* [Redux](https://github.com/rackt/redux)'s futuristic [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) implementation
+* [Redux Dev Tools](https://github.com/gaearon/redux-devtools) for next generation DX (developer experience). Watch [Dan Abramov's talk](https://www.youtube.com/watch?v=xsSnOQynTHs).
+* [React Router Redux](https://github.com/reactjs/react-router-redux) Redux/React Router bindings.
+* [ESLint](http://eslint.org) to maintain a consistent code style
+* [redux-form](https://github.com/erikras/redux-form) to manage form state in Redux
+* [lru-memoize](https://github.com/erikras/lru-memoize) to speed up form validation
+* [multireducer](https://github.com/erikras/multireducer) to combine single reducers into one key-based reducer
+* [style-loader](https://github.com/webpack/style-loader), [sass-loader](https://github.com/jtangelder/sass-loader) and [less-loader](https://github.com/webpack/less-loader) to allow import of stylesheets in plain css, sass and less,
+* [bootstrap-sass-loader](https://github.com/shakacode/bootstrap-sass-loader) and [font-awesome-webpack](https://github.com/gowravshekar/font-awesome-webpack) to customize Bootstrap and FontAwesome
+* [react-helmet](https://github.com/nfl/react-helmet) to manage title and meta tag information on both server and client
+* [webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools) to allow require() work for statics both on client and server
+* [mocha](https://mochajs.org/) to allow writing unit tests for the project.
 
-* [Description](#description)
-* [Application example](#example)
-* [Installation](#installation)
-* [Express.js](#expressjs)
-	* [Serving master page](#serving-master-page)
-	* [API end-points](#api-endpoints)
-	* [Authorization and CORS](#authorization-cors)
-* [Backbone.js](#backbonejs)
-	* [RequireJS and CommonJS](#requirejs-and-commonjs)
-	* [Routing](#routing)
-	* [View Manager](#view-manager)
-	* [Applications](#applications)
-	* [Main view and subviews](#main-view-and-subviews)
-	* [Transitions](#transitions)
-* [Testing](#testing)
-	* [Backbone.js (front-end) tests](#front-end-tests)
-	* [Express.js (back-end) tests](#back-end-tests)
-	* [Functional (web driver) tests](#functional-tests)
-* [SEO](#seo)
-* [Build for production](#build-for-production)
-	* [Concatenate and minify](#concatenate-and-minify)
-	* [Gzip content](#gzip-content)
-	* [Development and production](#gzip-content)
-	* [Cache busting](#cache-busting)
-	* [Optimization results](#optimization-results)
-* [Deployment](#deployment)
+I cobbled this together from a wide variety of similar "starter" repositories. As I post this in June 2015, all of these libraries are right at the bleeding edge of web development. They may fall out of fashion as quickly as they have come into it, but I personally believe that this stack is the future of web development and will survive for several years. I'm building my new projects like this, and I recommend that you do, too.
 
-<a name="description"/>
-## Description
-
-SPA infrastructure setup could be time consuming. It's a typical problem, to configure `requirejs`, initial routing and view manager, to prevent memory leaks. This project could be used as a good start to build your own single page application.
-
-This project is a complete and minimal setup for building single page applications running on ``Express.js`` framework as back-end and ``Backbone.js`` as front-end.
-
-SPA itself is rather simple concept, but it requires some infrastructure to have in place, before building up a new application. This project already includes this infrastructure.
-
-<a name="example"/>
-## Application example
-
-'TheMailer' - simple app for managing emails, contacts, tasks.
-
-<a name="installation"/>
 ## Installation
 
-Clone github repository,
-
-```
-$ git clone git@github.com:alexanderbeletsky/backbone-express-spa.git
+```bash
+npm install
 ```
 
-Install npm dependencies,
+## Running Dev Server
 
-```
-$ npm install
-```
-
-Install bower dependencies,
-
-```
-$ bower install
+```bash
+npm run dev
 ```
 
-Run app (development mode),
+The first time it may take a little while to generate the first `webpack-assets.json` and complain with a few dozen `[webpack-isomorphic-tools] (waiting for the first Webpack build to finish)` printouts, but be patient. Give it 30 seconds.
 
-```
-$ node app.js
-```
+### Using Redux DevTools
 
-<a name="expressjs"/>
-## Express.js
+[Redux Devtools](https://github.com/gaearon/redux-devtools) are enabled by default in development.
 
-[Express.js](http://expressjs.com/) is used as back-end development framework. It's simple and easy to configure for SPA.
+- <kbd>CTRL</kbd>+<kbd>H</kbd> Toggle DevTools Dock
+- <kbd>CTRL</kbd>+<kbd>Q</kbd> Move DevTools Dock Position
+- see [redux-devtools-dock-monitor](https://github.com/gaearon/redux-devtools-dock-monitor) for more detailed information.
 
-In API-oriented architecture back-end is responsible for 2 main purposes:
+If you have the 
+[Redux DevTools chrome extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) installed it will automatically be used on the client-side instead.
 
-* Serving master page html
-* Providing API end-points for web client
+If you want to disable the dev tools during development, set `__DEVTOOLS__` to `false` in `/webpack/dev.config.js`.  
+DevTools are not enabled during production.
 
-### Master page
+## Building and Running Production Server
 
-[Master page](views/master.ejs) is main (and typically one) html page returned from server. It includes all styles and javascript, provides very basic layout and placeholder for application.
-
-```html
-<div class="container">
-	<div id="app" class="container"></div>
-</div>
+```bash
+npm run build
+npm run start
 ```
 
-After master page is served back to client the rest of UI and logic is build by ``Backbone.js``.
+## Demo
 
-<a name="serving-master-page"/>
-### Serving master page
+A demonstration of this app can be seen [running on heroku](https://react-redux.herokuapp.com), which is a deployment of the [heroku branch](https://github.com/erikras/react-redux-universal-hot-example/tree/heroku).
 
-To serve master pages application includes middleware component [serveMaster.js](source/middleware/serveMaster.js). It would respond with master page html for any request, except the requests for `/api`, `/components`, `/css/` or `/js`.
+## Documentation
 
-<a name="api-endpoints"/>
-### API end-points
+* [Exploring the Demo App](docs/ExploringTheDemoApp/ExploringTheDemoApp.md) is a guide that can be used before you install the kit.
+* [Installing the Kit](docs/InstallingTheKit/InstallingTheKit.md) guides you through installation and running the development server locally.
+* [Adding Text to the Home Page](docs/AddingToHomePage/AddingToHomePage.md) guides you through adding "Hello, World!" to the home page.
+* [Adding A Page](docs/AddingAPage/AddingAPage.md) guides you through adding a new page.
+* [React Tutorial - Converting Reflux to Redux](http://engineering.wework.com/process/2015/10/01/react-reflux-to-redux/), by Matt Star
+   If you are the kind of person that learns best by following along a tutorial, I can recommend Matt Star's overview and examples.
 
-API is HTTP, JSON based end-points. Sources are located at ``source/api``. Each API module returns a function that takes ``app`` instance and setup HTTP verb handler for a route.
 
-```js
-module.exports = function (app) {
-	app.get('/api/emails', function (req, res) {
-		res.json({status: 'GET /api/users'});
-	});
+## Explanation
 
-	app.post('/api/emails', function (req, res) {
-		res.json({status: 'POST /api/users'});
-	});
+What initially gets run is `bin/server.js`, which does little more than enable ES6 and ES7 awesomeness in the
+server-side node code. It then initiates `server.js`. In `server.js` we proxy any requests to `/api/*` to the
+[API server](#api-server), running at `localhost:3030`. All the data fetching calls from the client go to `/api/*`.
+Aside from serving the favicon and static content from `/static`, the only thing `server.js` does is initiate delegate
+rendering to `react-router`. At the bottom of `server.js`, we listen to port `3000` and initiate the API server.
 
-	app.put('/api/emails/:id', function (req, res) {
-		res.json({status: 'PUT /api/users/' + req.params.id});
-	});
+#### Routing and HTML return
 
-	app.del('/api/emails/:id', function (req, res) {
-		res.json({status: 'DELETE /api/users/' + req.params.id});
-	});
-};
+The primary section of `server.js` generates an HTML page with the contents returned by `react-router`. First we instantiate an `ApiClient`, a facade that both server and client code use to talk to the API server. On the server side, `ApiClient` is given the request object so that it can pass along the session cookie to the API server to maintain session state. We pass this API client facade to the `redux` middleware so that the action creators have access to it.
+
+Then we perform [server-side data fetching](#server-side-data-fetching), wait for the data to be loaded, and render the page with the now-fully-loaded `redux` state.
+
+The last interesting bit of the main routing section of `server.js` is that we swap in the hashed script and css from the `webpack-assets.json` that the Webpack Dev Server – or the Webpack build process on production – has spit out on its last run. You won't have to deal with `webpack-assets.json` manually because [webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools) take care of that.
+
+We also spit out the `redux` state into a global `window.__data` variable in the webpage to be loaded by the client-side `redux` code.
+
+#### Server-side Data Fetching
+
+The [redux-async-connect](https://www.npmjs.com/package/redux-async-connect) package exposes an API to return promises that need to be fulfilled before a route is rendered. It exposes a `<ReduxAsyncConnect />` container, which wraps our render tree on both [server](https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/server.js) and [client](https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/client.js). More documentation is available on the [redux-async-connect](https://www.npmjs.com/package/redux-async-connect) page.
+
+#### Client Side
+
+The client side entry point is reasonably named `client.js`. All it does is load the routes, initiate `react-router`, rehydrate the redux state from the `window.__data` passed in from the server, and render the page over top of the server-rendered DOM. This makes React enable all its event listeners without having to re-render the DOM.
+
+#### Redux Middleware
+
+The middleware, [`clientMiddleware.js`](https://github.com/erikras/react-redux-universal-hot-example/blob/master/src/redux/middleware/clientMiddleware.js), serves two functions:
+
+1. To allow the action creators access to the client API facade. Remember this is the same on both the client and the server, and cannot simply be `import`ed because it holds the cookie needed to maintain session on server-to-server requests.
+2. To allow some actions to pass a "promise generator", a function that takes the API client and returns a promise. Such actions require three action types, the `REQUEST` action that initiates the data loading, and a `SUCCESS` and `FAILURE` action that will be fired depending on the result of the promise. There are other ways to accomplish this, some discussed [here](https://github.com/rackt/redux/issues/99), which you may prefer, but to the author of this example, the middleware way feels cleanest.
+
+#### Redux Modules... *What the Duck*?
+
+The `src/redux/modules` folder contains "modules" to help
+isolate concerns within a Redux application (aka [Ducks](https://github.com/erikras/ducks-modular-redux), a Redux Style Proposal that I came up with). I encourage you to read the
+[Ducks Docs](https://github.com/erikras/ducks-modular-redux) and provide feedback.
+
+#### API Server
+
+This is where the meat of your server-side application goes. It doesn't have to be implemented in Node or Express at all. This is where you connect to your database and provide authentication and session management. In this example, it's just spitting out some json with the current time stamp.
+
+#### Getting data and actions into components
+
+To understand how the data and action bindings get into the components – there's only one, `InfoBar`, in this example – I'm going to refer to you to the [Redux](https://github.com/gaearon/redux) library. The only innovation I've made is to package the component and its wrapper in the same js file. This is to encapsulate the fact that the component is bound to the `redux` actions and state. The component using `InfoBar` needn't know or care if `InfoBar` uses the `redux` data or not.
+
+#### Images
+
+Now it's possible to render the image both on client and server. Please refer to issue [#39](https://github.com/erikras/react-redux-universal-hot-example/issues/39) for more detail discussion, the usage would be like below (super easy):
+
+```javascript
+let logoImage = require('./logo.png');
 ```
 
-To enable API end-point, you should modify ``app.js`` file, like
+#### Styles
 
-```js
-// api endpoints
-require('./source/api/emails')(app);
-require('./source/api/contacts')(app);
-require('./source/api/tasks')(app);
+This project uses [local styles](https://medium.com/seek-ui-engineering/the-end-of-global-css-90d2a4a06284) using [css-loader](https://github.com/webpack/css-loader). The way it works is that you import your stylesheet at the top of the `render()` function in your React Component, and then you use the classnames returned from that import. Like so:
+
+```javascript
+render() {
+const styles = require('./App.scss');
+...
 ```
 
-<a name="authorization-cors"/>
-## Authorization and CORS
+Then you set the `className` of your element to match one of the CSS classes in your SCSS file, and you're good to go!
 
-While you design new open API, authorization is probably one of the most important topics to consider.
-
-There are many ways you can implement authorization. Choices you made will affect how much of API is usable and scalable. Before we jump in, I highly recommend blog post by [Vinay Sahni](https://twitter.com/veesahni) regarding [Pragmatic RESTFull API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api).
-
-Traditional authorization algorithms are typically using some kind of `token-based` authorization. Means, each user of API is getting registered and special token (pseudo-random looking string) is issued and associated with that user. Token contains user identification + some meta info, encrypted with some simple algorithm as `base64`. For each request, users sends this token (in HTTP headers of query), server lookups for this token and if it finds match between encrypted `userId` and token, request treated as authenticated.
-
-Tokens always have to be transported by secured channel as SSL.
-
-The only problem with that approach is that each request requires at least one *expensive* database call. This could be avoided by applying some cryptography on authorization procedure. One of the approaches is usage of self-signed [HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code) tokens. It's easy to implement and it scales very nice.
-
-### HMAC based API authorization
-
-The routine could be slitted to such steps:
-
-1. Client signs ups to API by sending `username` and `password`.
-2. Client get registered, `password` hashed and placed to `users` collection in DB.
-3. Authorization token is *issued*.
-4. Client receives token back.
-5. For all further requests client sends token as `password` in [authorization header](http://tools.ietf.org/html/rfc1945#section-10.2) of HTTP request.
-6. Server *validates* the token, if it's valid request treated as authenticated.
-
-Note, token *validation* procedure doesn't require any DB request everything all depends on computation.
-
-### HMAC token
-
-Let's take a look how to issue new authorization token. We typically want to reduce token lifetime, in case it's stolen. So, we want to include some meta information about time it's issued as well it's owner. This information is concatenated and HMAC algorithm applied, using servers *private* key.
-
-After we add same info in open text and encrypt result by `base64`.
-
-```js
-var timespamp = moment();
-var message = username + ';' + timespamp.valueOf();
-var hmac = crypto.createHmac('sha1', AUTH_SIGN_KEY).update(message).digest('hex');
-var token = username + ';' + timespamp.valueOf() + ';' + hmac;
-var tokenBase64 = new Buffer(token).toString('base64');
+```jsx
+<div className={styles.mySection}> ... </div>
 ```
 
-Here, `AUTH_SIGN_KEY` is private server key and `tokenBase64` is the final result, sent back to client.
+#### Alternative to Local Styles
 
-### Authorization
+If you'd like to use plain inline styles this is possible with a few modifications to your webpack configuration.
 
-Client stores the token to cookie or localstorage and using it for *each* API request as part of Basic authentication header.
+**1. Configure Isomorphic Tools to Accept CSS**
 
-Request.js example,
+In `webpack-isomorphic-tools.js` add **css** to the list of style module extensions
 
-```js
-request.get({url: url, auth: {user: username, password: token}}, function (err, resp) {
-	error = err;
-	response = resp;
-	done();
-});
+```javascript
+    style_modules: {
+      extensions: ['less','scss','css'],
 ```
 
-jQuery example,
+**2. Add a CSS loader to webpack dev config**
 
-```js
-$.ajax
-({
-	type: "GET",
-	url: "index1.php",
-	dataType: 'json',
-	async: false,
-	username: username,
-	password: token,
-	success: function (){
-		done()
-	}
-});
+In `dev.config.js` modify **module loaders** to include a test and loader for css
+
+```javascript
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: 'style-loader!css-loader'},
 ```
 
-Backbone.sync example,
+**3. Add a CSS loader to the webpack prod config**
 
-```js
-Backbone.ajax = function() {
-	var defaults = arguments[0];
-	_.extend(defaults, {
-		username: username,
-		password: token
-	});
+You must use the **ExtractTextPlugin** in this loader. In `prod.config.js` modify **module loaders** to include a test and loader for css
 
-	return Backbone.$.ajax.apply(Backbone.$, arguments);
-};
+```javascript
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
 ```
 
-### Token validation
+**Now you may simply omit assigning the `required` stylesheet to a variable and keep it at the top of your `render()` function.**
 
-Now, server receives token back and request need to be authenticated.
-
-1. Server decodes token `base64` and parses out all token information (simple split by ';').
-2. Server computes HMAC signature of received `username` and `timestamp` using the *same* private server key.
-3. It compares it with HMAC received in token.
-4. If HMAC's are different, request is not authorized, 401 reply.
-5. Otherwise, server checks token TTL, if expires , 401 reply.
-6. Otherwise request is authenticated.
-
-If token is compromised or wrong, HMAC guarantees that signatures will never match, except attacker is aware of server private key.
-
-### API Authorization implementation
-
-API exposes few methods,
-
-```
-/api/auth/signup
-/api/auth/login
-/api/auth/validate
+```javascript
+render() {
+require('./App.css');
+require('aModule/dist/style.css');
+...
 ```
 
-Signup, used as initial client registration. Login is called each time, new token have to issued. Validate is used to check token validity (it's used as internal method mostly).
+**NOTE** In order to use this method with **scss or less** files one more modification must be made. In both `dev.config.js` and `prod.config.js` in the loaders for less and scss files remove 
 
-There is [source/middleware/auth.js](source/middleware/auth.js) that exposes `createToken` and `validateToken` functions. Create token is applied to `signup` and `login` api methods, `validateToken` is applied on every API that requires authorization.
+1. `modules`
+2. `localIdentName...`
 
-Checkout [test/api/auth.specs.js](test/api/auth.specs.js) that specifies how authorization works in details, [source/api/auth.js](source/api/auth.js) for end-point implementation.
-
-### CORS
-
-CORS ([Cross Origin Resource Sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) have to be enabled to allow the API to be used from client applications, running on domain different than API deployment domain. For instance, your API can be deployed at `https://api.example.com`, but application running at `https://app.client.com`.
-
-In order to allow that, special middleware function created, [/source/middleware/cors.js](/source/middleware/cors.js):
-
-```js
-function cors() {
-	return function (req, res, next) {
-		res.header('Access-Control-Allow-Origin', '*');
-		res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-		res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-Access-Token, X-Revision, Content-Type');
-
-		next();
-	};
-}
-
-module.exports = cors;
+Before:
+```javascript
+{ test: /\.less$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap' },
+```
+After:
+```javascript
+{ test: /\.less$/, loader: 'style!css?importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap' },
 ```
 
-It have be added during application initialization, like:
+After this modification to both loaders you will be able to use scss and less files in the same way as css files.
 
-```js
-	app.use(middleware.cors());
-```
+#### Unit Tests
 
-<a name="backbonejs"/>
-## Backbone.js
+The project uses [Mocha](https://mochajs.org/) to run your unit tests, it uses [Karma](http://karma-runner.github.io/0.13/index.html) as the test runner, it enables the feature that you are able to render your tests to the browser (e.g: Firefox, Chrome etc.), which means you are able to use the [Test Utilities](http://facebook.github.io/react/docs/test-utils.html) from Facebook api like `renderIntoDocument()`.
 
-[Backbone.js](http://backbonejs.org/) is the one of most popular front-end development framework (library). It provides abstractions for models, views, collections and able to handle client-side routing.
+To run the tests in the project, just simply run `npm test` if you have `Chrome` installed, it will be automatically launched as a test service for you.
 
-Front-end architecture is build on modular structure and relying on [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) to allow build scalable applications.
+To keep watching your test suites that you are working on, just set `singleRun: false` in the `karma.conf.js` file. Please be sure set it to `true` if you are running `npm test` on a continuous integration server (travis-ci, etc).
 
-<a name="requirejs-and-commonjs"/>
-### RequireJS and CommonJS
+## Deployment on Heroku
 
-[RequireJS](http://requirejs.org/) picked up as asynchronous javascript module loading. ``RequireJS`` uses it's own style for defining modules, specifying the dependency as array of strings.
+To get this project to work on Heroku, you need to:
 
-```js
-define([
-	'/some/dep',
-	'another/dep',
-	'yet/another/dep',
-	'text!./templates/template.html,
-	jQuery,
-	Backbone'], function(SomeDep, AnotherDep, YetAnotherDep, template, $, Backbone) {
-		// module implementation...
-	});
-```
+1. Remove the `"PORT": 8080` line from the `betterScripts` / `start-prod` section of `package.json`.
+2. `heroku config:set NODE_ENV=production`
+3. `heroku config:set NODE_PATH=./src`
+4. `heroku config:set NPM_CONFIG_PRODUCTION=false`
+  * This is to enable webpack to run the build on deploy.
 
-With some time spent on Node.js programming, CommonJS style becomes more convenient to use. Fortunately ``RequireJS`` has [CommonJS](http://requirejs.org/docs/commonjs.html) style implementation.
+The first deploy might take a while, but after that your `node_modules` dir should be cached.
 
-```js
-define(function (require) {
-	// dependencies
-	var SomeDep = require('/some/dep');
-	var AnotherDep = require('another/dep');
+## FAQ
 
-	// export
-	return {};
-});
-```
+This project moves fast and has an active community, so if you have a question that is not answered below please visit our [Discord channel](https://discord.gg/0ZcbPKXt5bZZb1Ko) or file an issue.
 
-<a name="routing"/>
-### Routing
 
-All routing logic is placed in [/core/router.js](public/js/core/router.js). There are 3 routes defined in boilerplate.
+## Roadmap 
 
-Each route handler is responsible for *starting up* new application. Application `run` function takes ``ViewManager`` instance.
+Although this isn't a library, we recently started versioning to make it easier to track breaking changes and emerging best practices. 
 
-<a name="view-manager"/>
-### View manager
+* [Inline Styles](docs/InlineStyles.md) - CSS is dead
 
-SPA application typical threat is *memory leaks*. Memory leaks might appear for a few reasons, one of the most famous reason for Backbone applications are, so called, [zombie views](http://lostechies.com/derickbailey/2011/09/15/zombies-run-managing-page-transitions-in-backbone-apps/).
+## Contributing
 
-[/core/viewManager.js](public/js/core/viewManager.js) is responsible for disposing views during switch from one router to another.
+I am more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :) 
 
-Besides of that, it handles *transitions* during application switch.
+If you would like to submit a pull request, please make an effort to follow the guide in [CONTRIBUTING.md](CONTRIBUTING.md). 
+ 
+---
+Thanks for checking this out.
 
-<a name="applications"/>
-### Applications
-
-Application is concept of grouping `models`, `collections`, `views` of unit in one place. The rule is, "one route - one application". Router matches the route, loading the application entry point and passes `viewManager` (or any other parameters, like id's or query strings) into application.
-
-All applications are [apps](public/js/apps) folder.
-
-[app.js](public/js/apps/home/app.js) is entry point of application and it's responsible for several things:
-
-* Fetching initial application data
-* Instantiating Main View of application
-
-```js
-define(function(require) {
-	var MainView = require('./views/MainView');
-
-	return {
-		run: function (viewManager) {
-			var view = new MainView();
-			viewManager.show(view);
-		}
-	};
-});
-```
-
-<a name="mainview-and-subviews"/>
-### Main view and subviews
-
-*Main view* responsible for UI of application. It's quite typically that main view is only instantiating subviews and passing the models/collections further down.
-
-[MainView.js](public/js/apps/home/views/MainView.js) keeps track of subviews in ``this.subviews`` arrays. Each subview will be closed by `ViewManager` [dispose](public/js/core/viewManager.js#L22) function.
-
-```js
-var MainView = Backbone.View.extend({
-	initialize: function () {
-		this.subviews = [];
-	},
-
-	render: function () {
-		var headerView = new HeaderView();
-		this.subviews.push(headerView);
-		this.$el.append(headerView.render().el);
-
-		var footerView = new FooterView();
-		this.subviews.push(footerView);
-		this.$el.append(footerView.render().el);
-
-		return this;
-	}
-});
-```
-
-<a name="templates"/>
-### Templates
-
-[Handlebars](http://handlebarsjs.com/) is picked up as templating engine, powered by [require-handlebars-plugin](https://github.com/SlexAxton/require-handlebars-plugin). Templates are stored on application level in `template` folder. Handlebars plugin is configured to keep templates in `.html` files.
-
-View is loading template through `!hbs` plugin and uses that in `render()` function.
-
-```js
-var HeaderView = Backbone.View.extend({
-	template: require('hbs!./../templates/HeaderView'),
-
-	render: function () {
-		this.$el.html(this.template({title: 'Backbone SPA boilerplate'}));
-		return this;
-	}
-});
-```
-
-<a name="transitions"/>
-## Transitions
-
-Transitions is a very nice feature for single pages applications. It adds the visual effects of switching from one application to another.
-
-Boilerplate is relying on wonderful [animate.css](https://github.com/daneden/animate.css) library. [core/transition.js](public/js/core/transition.js) is responsible for applying transition style. It's being called from [/core/viewManager.js](public/js/core/viewManager.js).
-
-Once you decide to have transitions in your app, simply modify [master.ejs](views/master.ejs) and add ``data-transition`` attribute to application ``div``.
-
-```html
-<div class="container">
-	<div id="app" class="container" data-transition="fadeOutLeft"></div>
-</div>
-```
-
-Checkout the list of available transitions on [animate.css](https://github.com/daneden/animate.css) page. You can apply anything you want, please note "Out" transition type is suited the best.
-
-<a name="testing"/>
-## Testing
-
-Testing is key of quality product. Both sides (front and back) have to covered with tests to tackle the complexity.
-
-### Execute all tests
-
-To execute all tests, run
-
-```
-$ npm test
-```
-
-<a name="front-end-tests"/>
-### Backbone.js (front-end) tests
-
-TODO.
-
-<a name="back-end-tests"/>
-### Express.js (back-end) tests
-
-TODO.
-
-<a name="functional-tests"/>
-### Functional (web driver) tests
-
-TODO.
-
-<a name="seo"/>
-## SEO
-
-TODO.
-
-<a name="build-for-production"/>
-## Build for production
-
-Modern web applications contain a lot of JavaScript/CSS files. While application is *loading* all that recourses have to be in-place, so browser issuing HTTP requests to fetch them. As more application grow, as more requests need to be done.. as slower initial loading is. There are two ways of *optimization* of initial application loading:
-
-* concatenate and minify (decrease HTTP request)
-* gzip content (decrease payload size)
-
-Application could operate in several modes - development, production. In development mode, we don't care about optimizations at all. Even more, we are interested to get not processed source code, to be able to debug easily. In production mode, we have to apply as much effort as possible to decrease initial load time.
-
-<a name="concatenate-and-minify"/>
-### Concatenate and minify
-
-[RequireJS](http://requirejs.org/) comes together with [optimization](http://requirejs.org/docs/optimization.html) tool, called `r.js`. It's able to concatenate and minify both JavaScript and CSS code.
-
-To simplify the process, we'll use [GruntJS](http://gruntjs.com/) tasks runner. GruntJS is very handy tool, with great community around and very rich contrib library. There is a special task to handle `RequireJS` optimizations, called [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs).
-
-[Gruntfile.js](Gruntfile.js) contains all required configuration. To run grunt,
-
-```
-$ grunt
-```
-
-The result of the grunt run is new folder [/public/build](/public/build/) that contains 2 files: `main.css`, `main.js` - concatenated and minified JavaScript and CSS code.
-
-<a name="gzip-content"/>
-### Gzip content
-
-Besides concatenation, it's important to compress resources. Express.js includes this functionality out of the box, as [compress()](http://expressjs.com/api.html#compress) middleware function.
-
-<a name="development-and-production"/>
-### Development and production
-
-The configuration distinction goes in [app.js](app.js) file.
-
-```js
-app.configure('development', function(){
-	app.use(express.errorHandler());							// apply error handler
-	app.use(express.static(path.join(__dirname, 'public')));
-	app.use(middleware.serveMaster.development());				// apply development mode master page
-});
-
-app.configure('production', function(){
-	app.use(express.compress());								// apply gzip content
-	app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneMonth }));
-	app.use(middleware.serveMaster.production());				// apply production mode master page
-});
-```
-
-[serveMaster.js](source/middleware/serveMaster.js) middleware component is would serve different version of master page, for different mode. In development mode, it would use uncompressed JavaScript and CSS, in production mode, ones that placed in [/public/build](/public/build/) folder.
-
-<a name="cache-busting" />
-### Cache busting
-
-Caching is in general good since it helps to application to be loaded faster, but it could hurt while you re-deploy application. Browsers do not track the actual content of file, so if the content has changed, but URL still the same, browser will ignore that.
-
-Besides, different browsers have different caching strategies. IE for instance, is 'famous' with is aggressive caching.
-
-Cache busting is widely adopted technique. There are some different implementations for that, but one of the most effective is: name your resources in the way, so if content has changed the name of resource would change as well. Basic implementation is to prefix file names with **hash** computed on file contents.
-
-Boilerplate uses [grunt-hashres](https://github.com/Luismahou/grunt-hashres) task for that (currently I'm using my own [fork](https://github.com/alexanderbeletsky/grunt-hashres), hope that changes are promoted to main repo soon). That task transforms the [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) output files `main.js`, `main.css` into something like `main-23cbb34ffaabd22d887abdd67bfe5b2c.js`, `main-5a09ac388df506a82647f47e3ffd5187.css`.
-
-It also produces [/source/client/index.js](/source/client/index.js) file [serveMaster.js](source/middleware/serveMaster.js) uses to render production master page correctly.
-
-Now, everything that either `.js` or `.css` content is changed, build would produce new files and they are guaranteed to be loaded by browser again.
-
-<a name="optimization-results"/>
-### Optimization results
-
-On a left side you see application running in development mode, on a right side in  production mode.
-
-![optimization results](/public/img/optimizations.png?raw=true)
-
-Even for such small application as 'TheMailer', the benefits are obvious:
-
-* Requests: 55 / 4 ~ 14 times fewer.
-* Payload: 756Kb / 43.4Kb ~ 17 times smaller.
-* Load time: 898ms / 153ms ~ 6 times faster.
-
-<a name="deployment"/>
-## Deployment
-
-TODO.
-
-
-<a name="generator"/>
-## Yeoman generator
-
-TODO.
-
-# Legal Info (MIT License)
-
-Copyright (c) 2013 Alexander Beletsky
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+– Erik Rasmussen, [@erikras](https://twitter.com/erikras)
