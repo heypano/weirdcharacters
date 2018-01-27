@@ -12,7 +12,10 @@
         "lt_help": "npm install localtunnel -g to use this. It will create a tunnel at a specific port exposed at a url",
         "start": "node buildScripts/srcServer.js",
         "lt": "lt --port $npm_package_config_server_port --subdomain heypano",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prebananas": "node buildScripts/prebananas.js",
+        "bananas": "node buildScripts/bananas.js",
+        "postbananas": "node buildScripts/postbananas.js"
 
     },
     "dependencies": {
