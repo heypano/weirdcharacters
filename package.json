@@ -1,0 +1,26 @@
+{
+  "name": "heypano-web-starter-kit",
+  "version": "1.0.0",
+  "description": "Pano's JS (Web Dev) starter kit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heypano/web-starter-kit.git"
+  },
+  "keywords": [
+    "js",
+    "starter",
+    "kit",
+    "npm",
+    "babel"
+  ],
+  "author": "Pano Papadatos (www.heypano.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heypano/web-starter-kit/issues"
+  },
+  "homepage": "https://github.com/heypano/web-starter-kit#readme"
+}
