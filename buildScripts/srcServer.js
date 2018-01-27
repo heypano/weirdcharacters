@@ -1,8 +1,9 @@
 var express = require('express');
 var path = require('path');
 var open = require('open');
+var config = require('../package.json').config;
 
-var port = 3000;
+var port = config.server.port;
 var server = express();
 var srcDir = "../src/";
 var entryFile = "index.html";

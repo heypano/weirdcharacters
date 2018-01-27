@@ -3,8 +3,17 @@
     "version": "1.0.1",
     "description": "Pano's JS (Web Dev) starter kit",
     "main": "index.js",
+    "config": {
+      "server": {
+          "port": 3000
+      }
+    },
     "scripts": {
+        "lt_help": "npm install localtunnel -g to use this. It will create a tunnel at a specific port exposed at a url",
+        "start": "node buildScripts/srcServer.js",
+        "lt": "lt --port $npm_package_config_server_port --subdomain heypano",
         "test": "echo \"Error: no test specified\" && exit 1"
+
     },
     "dependencies": {
         "whatwg-fetch": "1.0.0"
