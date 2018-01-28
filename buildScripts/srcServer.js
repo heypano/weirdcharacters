@@ -2,8 +2,12 @@ import express from 'express';
 import path from 'path';
 import open from 'open';
 import pckg from '../package.json';
+import webpack from 'webpack';
+import webpackConfig from "../webpack.config.dev";
+import middleWare from 'webpack-dev-middleware';
 
 const config = pckg.config;
+const compiler = webpack(webpackConfig);
 const port = config.server.port;
 const server = express();
 const srcDir = "../src/";
@@ -11,6 +15,10 @@ const entryFile = "index.html";
 const domain = "http://localhost";
 const siteAddress = domain + ":" + port;
 
+server.use(middleWare(compiler,{
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath
+}));
 
 server.get('/', function(req,res) {
     var file = getPath(srcDir + entryFile);
