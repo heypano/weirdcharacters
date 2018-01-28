@@ -1,4 +1,4 @@
-var chalk = require('chalk');
+import chalk from 'chalk';
 
 var m = chalk.magenta;
 var i = chalk.inverse;

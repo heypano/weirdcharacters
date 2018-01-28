@@ -1,4 +1,4 @@
-var chalk = require("chalk");
+import chalk from 'chalk';
 var [nodeExecutable, thisScript, ...args] = process.argv;
 var [r, y, b, g, i] = [chalk.red, chalk.yellow, chalk.blue, chalk.green, chalk.inverse];
 processHelpArguments(args);

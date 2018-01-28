@@ -1,7 +1,9 @@
-var express = require('express');
-var path = require('path');
-var open = require('open');
-var config = require('../package.json').config;
+import express from 'express';
+import path from 'path';
+import open from 'open';
+import pckg from '../package.json';
+
+var config = pckg.config;
 
 var port = config.server.port;
 var server = express();
