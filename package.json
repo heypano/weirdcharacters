@@ -9,7 +9,7 @@
         }
     },
     "scripts": {
-        "start": "npm-run-all --parallel security_check open:src",
+        "start": "npm-run-all --parallel security_check open:src lint:watch",
         "open:src": "babel-node buildScripts/srcServer.js",
         "localtunnel": "lt --port $npm_package_config_server_port --subdomain heypano",
         "localtunnel_help": "echo \"Localtunnel exposes port $npm_package_config_server_port ($$npm_package_config_server_port) at a url (https://localtunnel.github.io/www/)\"",
@@ -18,7 +18,9 @@
         "bananas": "babel-node buildScripts/bananas.js",
         "postbananas": "babel-node buildScripts/postbananas.js",
         "security_check": "nsp check",
-        "help": "babel-node buildScripts/help.js"
+        "help": "babel-node buildScripts/help.js",
+        "lint": "esw --color webpack.config.* src buildScripts",
+        "lint:watch": "npm run lint -- --watch"
     },
     "dependencies": {
         "whatwg-fetch": "1.0.0"
