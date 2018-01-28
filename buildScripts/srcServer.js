@@ -3,14 +3,14 @@ import path from 'path';
 import open from 'open';
 import pckg from '../package.json';
 
-var config = pckg.config;
+const config = pckg.config;
+const port = config.server.port;
+const server = express();
+const srcDir = "../src/";
+const entryFile = "index.html";
+const domain = "http://localhost";
+const siteAddress = domain + ":" + port;
 
-var port = config.server.port;
-var server = express();
-var srcDir = "../src/";
-var entryFile = "index.html";
-var domain = "http://localhost";
-var siteAddress = domain + ":" + port;
 
 server.get('/', function(req,res) {
     var file = getPath(srcDir + entryFile);
