@@ -3,7 +3,8 @@ import path from 'path';
 export default {
     devtool: 'inline-source-map', // Source map settings - does not impact production as source maps are only downloaded when a user opens dev tools
     entry: [
-        ppath('src/index') // This is the first file loaded
+        "babel-polyfill",
+        ppath('src/index')
     ],
     target: 'web', // You can use "node" or "electron" here
     output: {
