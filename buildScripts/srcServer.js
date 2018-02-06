@@ -14,11 +14,13 @@ const srcDir = "../src/";
 const entryFile = "index.html";
 const domain = "http://localhost";
 const siteAddress = domain + ":" + port;
-
-server.use(middleWare(compiler,{
+const middleWareSettings = {
     noInfo: true,
     publicPath: webpackConfig.output.publicPath
-}));
+};
+
+
+server.use(middleWare(compiler,middleWareSettings));
 
 server.get('/', function(req,res) {
     var file = getPath(srcDir + entryFile);
