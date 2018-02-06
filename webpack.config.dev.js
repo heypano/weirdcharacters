@@ -15,7 +15,8 @@ export default {
     module: {
         loaders: [ // This means we can import any of these files with the import keyword
             {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
-            {test: /\.css$/, loaders: ['style-loader','css-loader']}
+            {test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
+            {test: /\.css$/, loaders: ['style-loader', 'css-loader']}
         ]
     }
 }
