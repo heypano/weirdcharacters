@@ -35,6 +35,17 @@ server.listen(port, function (err) {
     }
 });
 
+server.get('/cats', function(req,res) {
+    res.json({
+        cats: [{
+            name: "Dexter",
+            description: "Chill Cat"
+        }, {
+            name: "Manoli",
+            description: "Hilarious Cat"
+        }]
+    })
+});
 
 function getPath (location) {
     return path.join(__dirname, location);

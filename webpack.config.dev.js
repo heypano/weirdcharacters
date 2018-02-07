@@ -4,6 +4,7 @@ export default {
     devtool: 'inline-source-map', // Source map settings - does not impact production as source maps are only downloaded when a user opens dev tools
     entry: [
         "babel-polyfill",
+        "whatwg-fetch",
         ppath('src/index')
     ],
     target: 'web', // You can use "node" or "electron" here
