@@ -3,7 +3,7 @@ import getBaseUrl from '../api/baseUrl';
 const debug = (window.location.hostname === "localhost");
 const baseUrl = getBaseUrl(debug);
 
-export function get(url){
+function get(url){
     const urlToFetch = baseUrl + url;
     return fetch(urlToFetch).then(onSuccess, onError);
 }
