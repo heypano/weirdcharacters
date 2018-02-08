@@ -6,7 +6,7 @@
     "config": {
         "server": {
             "port": 3000,
-            "port_COMMENT": "This is used by localtunned and webpack server"
+            "port_COMMENT": "This is used by localtunnel and webpack server"
         }
     },
     "scripts": {
@@ -21,7 +21,8 @@
         "security_check": "nsp check",
         "help": "babel-node buildScripts/help.js",
         "lint": "esw --color webpack.config.* src buildScripts",
-        "lint:watch": "npm run lint -- --watch"
+        "lint:watch": "npm run lint -- --watch",
+        "generateMockData": "babel-node buildScripts/generateMockData.js"
     },
     "dependencies": {
         "babel-polyfill": "^6.26.0",
@@ -44,6 +45,7 @@
         "eslint-watch": "^3.1.3",
         "express": "^4.16.2",
         "extract-text-webpack-plugin": "^3.0.2",
+        "faker": "^4.1.0",
         "html-webpack-plugin": "^2.30.1",
         "jsdom": "^11.6.2",
         "json-schema-faker": "^0.5.0-rc12",

@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 31590353,
+      "firstName": "Efrain",
+      "lastName": "Rau",
+      "email": "Afton.Effertz30@yahoo.com"
+    },
+    {
+      "id": 17713712,
+      "firstName": "Evangeline",
+      "lastName": "Wisoky",
+      "email": "Milo.Bahringer12@gmail.com"
+    },
+    {
+      "id": 63587018,
+      "firstName": "Daisy",
+      "lastName": "Watsica",
+      "email": "Bailee61@gmail.com"
+    },
+    {
+      "id": 88735788,
+      "firstName": "Tiana",
+      "lastName": "Murazik",
+      "email": "Sandy_Dach@hotmail.com"
+    }
+  ]
+}
