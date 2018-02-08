@@ -10,7 +10,7 @@
         }
     },
     "scripts": {
-        "start": "npm-run-all --parallel security_check open:src lint:watch",
+        "start": "npm-run-all --parallel security_check open:src lint:watch start-mockapi",
         "open:src": "babel-node buildScripts/srcServer.js",
         "localtunnel": "lt --port $npm_package_config_server_port --subdomain heypano",
         "localtunnel_help": "echo \"Localtunnel exposes port $npm_package_config_server_port ($$npm_package_config_server_port) at a url (https://localtunnel.github.io/www/)\"",
@@ -22,7 +22,9 @@
         "help": "babel-node buildScripts/help.js",
         "lint": "esw --color webpack.config.* src buildScripts",
         "lint:watch": "npm run lint -- --watch",
-        "generateMockData": "babel-node buildScripts/generateMockData.js"
+        "generateMockData": "babel-node buildScripts/generateMockData.js",
+        "prestart-mockapi": "npm run generateMockData",
+        "start-mockapi": "json-server --watch src/api/db.json --port 3001"
     },
     "dependencies": {
         "babel-polyfill": "^6.26.0",
