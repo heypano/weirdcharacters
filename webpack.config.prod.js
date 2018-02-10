@@ -19,7 +19,19 @@ export default {
         // Create index.html with automatically injected bundle
         new HtmlWebpackPlugin({
             template: 'src/index.html',
-            inject: true
+            inject: true,
+            minify: { // Lots of options for minifying here
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true
+            }
         }),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true // Change/Remove this if you do not want a production source map
