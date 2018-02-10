@@ -14,7 +14,7 @@
         "open:src": "babel-node buildScripts/srcServer.js",
         "localtunnel": "lt --port $npm_package_config_server_port --subdomain heypano",
         "localtunnel_help": "echo \"Localtunnel exposes port $npm_package_config_server_port ($$npm_package_config_server_port) at a url (https://localtunnel.github.io/www/)\"",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "echo \"No tests yet\"",
         "prebananas": "babel-node buildScripts/prebananas.js",
         "bananas": "babel-node buildScripts/bananas.js",
         "postbananas": "babel-node buildScripts/postbananas.js",

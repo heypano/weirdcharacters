@@ -1,4 +1,5 @@
 import path from 'path';
+import webpack from 'webpack';
 
 export default {
     devtool: 'inline-source-map', // Source map settings - does not impact production as source maps are only downloaded when a user opens dev tools
@@ -15,11 +16,18 @@ export default {
     },
     plugins: [],
     module: {
-        loaders: [ // This means we can import any of these files with the import keyword
-            {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
-            {test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
-            {test: /\.css$/, loaders: ['style-loader', 'css-loader']}
-        ]
+        // This means we can import any of these files with the import keyword
+        rules: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: ['babel-loader']
+        }, {
+            test: /\.scss$/,
+            use: ['style-loader', 'css-loader', 'sass-loader']
+        }, {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        }]
     }
 }
 
