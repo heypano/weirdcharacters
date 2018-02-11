@@ -10,3 +10,9 @@ Pano's JS (Web Dev) starter kit
 - If a script is called `scriptName`, npm will automatically call `prescriptName` before its invocation and `postscriptName` after.
 - Make sure to run `npm install` before attempting anything (only once, unless modules are upgraded in the `package.json`)
 
+### Building for Production
+
+#### `npm run build`
+
+- 
+  
