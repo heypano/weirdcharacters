@@ -30,10 +30,31 @@ export default {
             use: ['babel-loader']
         }, {
             test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'sass-loader']
+            use: [
+                {
+                    loader: 'style-loader'
+                }, {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                }, {
+                    loader: 'sass-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                }]
         }, {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            use: [
+                {
+                    loader: 'style-loader'
+                }, {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                }]
         }]
     }
 }

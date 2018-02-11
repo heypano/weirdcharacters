@@ -6,7 +6,7 @@ const [r, y, b, g, i] = [chalk.red, chalk.yellow, chalk.blue, chalk.green, chalk
 
 process.env.NODE_ENV = 'production';
 
-console.log(b("Generating minified bundle at "+ webpackConfig.output.path + webpackConfig.output.filename));
+console.log(b("Generating minified bundle at "+ webpackConfig.output.path + '/' + webpackConfig.output.filename));
 
 webpack(webpackConfig).run((err, stats) => {
    if (err) {
