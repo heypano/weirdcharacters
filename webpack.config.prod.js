@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import WebpackMd5Hash from 'webpack-md5-hash';
 
 export default {
     devtool: 'source-map', // Source map settings - does not impact production as source maps are only downloaded when a user opens dev tools
@@ -13,9 +14,12 @@ export default {
     output: {
         path: ppath('dist'), // Actual output for production build
         publicPath: './', // This is where it is going to be served on the server
-        filename: 'bundle.js' // Bundle name
+        filename: 'bundle.[chunkhash].js' // Bundle name
     },
     plugins: [
+        // Hash the files using MD5 so that their names change when the content changes
+        new WebpackMd5Hash(),
+
         // Create index.html with automatically injected bundle
         new HtmlWebpackPlugin({
             template: 'src/index.html',
