@@ -34,7 +34,7 @@ export default {
             }
         }),
         new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true // Change/Remove this if you do not want a production source map
+            sourceMap: false // Change/Remove this if you want a production source map (Disabling this because it shows up globally as /Users/pano :( Figure out why TBD)
         }) // Minify JS
     ],
     module: {
@@ -49,15 +49,9 @@ export default {
                 {
                     loader: 'style-loader'
                 }, {
-                    loader: 'css-loader',
-                    options: {
-                        sourceMap: true
-                    }
+                    loader: 'css-loader'
                 }, {
-                    loader: 'sass-loader',
-                    options: {
-                        sourceMap: true
-                    }
+                    loader: 'sass-loader'
                 }]
         }, {
             test: /\.css$/,
@@ -65,10 +59,7 @@ export default {
                 {
                     loader: 'style-loader'
                 }, {
-                    loader: 'css-loader',
-                    options: {
-                        sourceMap: true
-                    }
+                    loader: 'css-loader'
                 }]
         }]
     }
