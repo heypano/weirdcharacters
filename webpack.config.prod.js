@@ -21,9 +21,10 @@ export default {
         new WebpackMd5Hash(),
 
         // Create index.html with automatically injected bundle
-        new HtmlWebpackPlugin({
+        new HtmlWebpackPlugin({ // Uses ejs by default
             template: 'src/index.html',
             inject: true,
+            environmentType: "PROD", // This is a custom property available in our html via ejs
             minify: { // Lots of options for minifying here
                 removeComments: true,
                 collapseWhitespace: true,

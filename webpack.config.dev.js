@@ -19,7 +19,8 @@ export default {
         // Create index.html with automatically injected bundle
         new HtmlWebpackPlugin({
             template: 'src/index.html',
-            inject: true
+            inject: true,
+            environmentType: "DEV" // This is a custom property available in our html via ejs
         })
     ],
     module: {
