@@ -39,7 +39,9 @@ export default {
             }
         }),
         new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false // Change/Remove this if you want a production source map (Disabling this because it shows up globally as /Users/pano :( Figure out why TBD)
+            sourceMap: false
+            // Change/Remove this if you want a production source map (Disabling this because it shows up globally as /Users/pano :( Figure out why TBD)
+            // Look into devtoolModuleFilenameTemplate to resolve this issue
         }) // Minify JS
     ],
     module: {

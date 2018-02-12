@@ -16,3 +16,6 @@ Pano's JS (Web Dev) starter kit
 
 - 
   
+## Help Understanding the Technology
+
+- React Tutorial
