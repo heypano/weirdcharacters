@@ -5,12 +5,30 @@ console.log("Debug: ", debug);
 const baseUrl = getBaseUrl(debug);
 
 /**
+ * Tries to figure out the appropriate URL to request for a service
+ * If a URL starts with http or https we will assume it is an external URL
+ */
+function getURLToFetch(url){
+    let externalURLRegex = /^http|^https/;
+    let urlToFetch;
+
+    // Do not edit external URLs
+    if(externalURLRegex.test(url)){
+        urlToFetch = url;
+    } else {
+        urlToFetch = baseUrl + url;
+    }
+
+    return urlToFetch;
+}
+
+/**
  * Initiate a GET request
  * @param {string} url
  * @returns {Promise<Response>}
  */
 function get(url){
-    const urlToFetch = baseUrl + url;
+    const urlToFetch = getURLToFetch(url);
     return fetch(urlToFetch).then(onSuccess, onError);
 }
 
@@ -20,7 +38,7 @@ function get(url){
  * @param data
  */
 function post(url, data){
-    const urlToFetch = baseUrl + url;
+    const urlToFetch = getURLToFetch(url);
     const fetchConfig = {
         method: 'POST',
         headers: {
