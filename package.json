@@ -13,7 +13,6 @@
         "clean-dist": "rimraf ./dist && mkdir dist",
         "prebuild": "npm-run-all clean-dist test lint",
         "build": "babel-node buildScripts/build.js",
-        "postbuild": "npm run distserver",
         "distserver": "babel-node buildScripts/distServer.js",
         "start": "npm-run-all --parallel security_check open:src lint:watch start-mockapi",
         "open:src": "babel-node buildScripts/srcServer.js",
