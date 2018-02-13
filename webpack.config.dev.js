@@ -20,7 +20,7 @@ export default {
         new HtmlWebpackPlugin({
             template: 'src/index.html',
             inject: true,
-            environmentType: "DEV" // This is a custom property available in our html via ejs
+            thisEnvironmentType: "DEV" // This is a custom property available in our html via ejs
         })
     ],
     module: {

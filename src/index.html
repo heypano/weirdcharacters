@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Pano's Web Starter Kit</title>
-    <% if(htmlWebpackPlugin.options.environmentType) { %>
+    <% if(htmlWebpackPlugin.options.thisEnvironmentType) { %>
     <script type="text/javascript">
-        window.environmentType = '<%=htmlWebpackPlugin.options.environmentType%>';
+        window.thisEnvironmentType = '<%=htmlWebpackPlugin.options.environmentType%>';
     </script>
     <% } %>
 </head>
