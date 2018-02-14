@@ -18,6 +18,11 @@ Pano's JS (Web Dev) starter kit
   
 ## Help Understanding the Technology
 
-- [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
-- [React Router](https://reacttraining.com/react-router/web/guides/philosophy)
-- [Simple React Router Tutorial](https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf)
+- [React: Tutorial](https://reactjs.org/tutorial/tutorial.html)
+- [React: Using Forms](https://reactjs.org/docs/forms.html)
+- [React: Component Lifecycle methods](https://reactjs.org/docs/react-component.html#componentdidmount)
+- [React: Event Handling]()
+- [React Router: Docs](https://reacttraining.com/react-router/web/guides/philosophy)
+- [React Router: Simple React Router Tutorial](https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf)
+- [React/Bootstrap: ReactStrap](https://github.com/reactstrap/reactstrap/blob/master/README.md)
+- [React/Bootstrap: ReactStrap Components](https://reactstrap.github.io/components/alerts/)

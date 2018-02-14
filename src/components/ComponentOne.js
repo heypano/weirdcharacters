@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {UncontrolledTooltip as Tooltip} from 'reactstrap';
 
 class ComponentOne extends React.Component {
     constructor (props) {
@@ -39,7 +40,11 @@ class ComponentOne extends React.Component {
 
         return (
             <div className="componentOne">
-                <h1>This is ComponentOne</h1>
+                <h1>This is ComponentOne </h1>
+                <div>with a bootstrap tooltip <span id="TooltipExample">here</span></div>
+                <Tooltip target="TooltipExample">
+                    Hello world!
+                </Tooltip>
                 <div>Current State: &quot;{stateValue}&quot;</div>
                 <Link to="c2" >C2</Link><br />
                 <button className="thisButton" onClick={this.onButtonClick}>Boop</button>
