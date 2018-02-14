@@ -18,4 +18,6 @@ Pano's JS (Web Dev) starter kit
   
 ## Help Understanding the Technology
 
-- React Tutorial
+- [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
+- [React Router](https://reacttraining.com/react-router/web/guides/philosophy)
+- [Simple React Router Tutorial](https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf)

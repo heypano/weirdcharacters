@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-class ComponentOne extends React.Component {
+class ComponentTwo extends React.Component {
     constructor (props) {
         super(props);
 
@@ -25,8 +25,10 @@ class ComponentOne extends React.Component {
      * @param {SyntheticEvent} e - Look at https://reactjs.org/docs/events.html
      */
     onButtonClick (e) {
-        // This is how we redirect in code
-        this.props.history.push('/c2');
+        // We do not need to pass the properties we are not changing
+        this.setState({
+            myStateValue: "New State Value: " + Math.random()
+        });
     }
 
     /**
@@ -34,18 +36,19 @@ class ComponentOne extends React.Component {
      * @returns {*}
      */
     render () {
+        let valuePassedAsAProp = this.props.valuePassedAsAProp || "No value for valuePassedAsAProp passed in the props";
         let stateValue = this.state.myStateValue || "No value for myStateValue passed in the state";
-        console.log("props",this.props,"state", this.state);
+        console.log(this.props, this.state);
 
         return (
-            <div className="componentOne">
-                <h1>This is ComponentOne</h1>
+            <div className="componentTwo">
+                <h1>This is componentTwo</h1>
                 <div>Current State: &quot;{stateValue}&quot;</div>
-                <Link to="c2" >C2</Link><br />
-                <button className="thisButton" onClick={this.onButtonClick}>Boop</button>
+                <Link to="c1" >C1</Link><br />
+                <button className="thisButton" onClick={this.onButtonClick}>{valuePassedAsAProp}</button>
             </div>
         );
     }
 }
 
-export default ComponentOne;
+export default ComponentTwo;

@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ComponentOne from './components/ComponentOne';
-import {getCats} from "./api/cats";
+import Routes from './routes/Routes';
+import { BrowserRouter as Router} from 'react-router-dom';
 import './scss/index.scss';
 
-let buttonText = "AWESOME";
-
-ReactDOM.render(
-    (<ComponentOne valuePassedAsAProp={buttonText}/>),
-    document.getElementById("app")
-);
-
-getCats().then(result => console.log(result));
+ReactDOM.render((
+    <Router>
+        {Routes}
+    </Router>
+), document.getElementById('app'));
