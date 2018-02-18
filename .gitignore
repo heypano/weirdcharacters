@@ -1,6 +1,9 @@
 # Webstorm Files
 .idea/
 
+# Database
+src/api/db.json
+
 # Logs
 logs
 *.log
