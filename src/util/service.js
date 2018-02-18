@@ -6,10 +6,10 @@ const baseUrl = getBaseUrl(debug);
 
 /**
  * Tries to figure out the appropriate URL to request for a service
- * If a URL starts with http or https we will assume it is an external URL
+ * If a URL starts with http, https or // we will assume it is an external URL
  */
 function getURLToFetch(url){
-    let externalURLRegex = /^http|^https/;
+    let externalURLRegex = /^http|^https|^\/\//;
     let urlToFetch;
 
     // Do not edit external URLs
