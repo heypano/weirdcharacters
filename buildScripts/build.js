@@ -26,7 +26,7 @@ webpack(webpackConfig).run((err, stats) => {
 
        console.log(`Webpack stats: ${stats}`);
 
-       console.log(g('Your app has been build for production.'))
+       console.log(g('Your app has been built for production.'))
 
        return 0;
    }
