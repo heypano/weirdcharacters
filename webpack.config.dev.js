@@ -12,7 +12,6 @@ export default {
     target: 'web', // You can use "node" or "electron" here
     output: {
         path: ppath('src'), // This is the local path
-        publicPath: '/', // This is where it is going to be served on the server
         filename: 'bundle.js' // This simulates the existance of bundle.js in the src directory, which is how we can include it in index.html
     },
     plugins: [

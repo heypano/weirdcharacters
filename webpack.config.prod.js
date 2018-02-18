@@ -13,7 +13,6 @@ export default {
     target: 'web', // You can use "node" or "electron" here
     output: {
         path: ppath('dist'), // Actual output for production build
-        publicPath: './', // This is where it is going to be served on the server
         filename: 'bundle.[chunkhash].js' // Bundle name
     },
     plugins: [
