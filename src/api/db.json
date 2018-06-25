@@ -1,0 +1,28 @@
+{
+  "cats": [
+    {
+      "id": 81901559,
+      "name": "Manoli",
+      "description": "Assimilated scalable methodology",
+      "firstName": "Anastacio",
+      "lastName": "Homenick",
+      "email": "Dan34@yahoo.com"
+    },
+    {
+      "id": 99301936,
+      "name": "Dexter",
+      "description": "Function-based dedicated frame",
+      "firstName": "Alessandro",
+      "lastName": "Kozey",
+      "email": "Enoch.Beier@hotmail.com"
+    },
+    {
+      "id": 57132421,
+      "name": "Todd",
+      "description": "Up-sized 4th generation website",
+      "firstName": "Delta",
+      "lastName": "Davis",
+      "email": "Leonora14@hotmail.com"
+    }
+  ]
+}
