@@ -1,27 +1,15 @@
 import path from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from "html-webpack-plugin";
+import {getPlugins, getEntryPoints, getOutputData} from './webpackHelper';
+import ExtractTextPlugin from "extract-text-webpack-plugin";
+const environment = "DEV";
 
-export default {
-    devtool: 'inline-source-map', // Source map settings - does not impact production as source maps are only downloaded when a user opens dev tools
-    entry: [
-        "babel-polyfill",
-        "whatwg-fetch",
-        ppath('src/index')
-    ],
+let config = {
+    devtool: 'source-map', // Source map settings - does not impact production as source maps are only downloaded when a user opens dev tools
+    entry: getEntryPoints(environment),
     target: 'web', // You can use "node" or "electron" here
-    output: {
-        path: ppath('src'), // This is the local path
-        filename: 'bundle.js' // This simulates the existance of bundle.js in the src directory, which is how we can include it in index.html
-    },
-    plugins: [
-        // Create index.html with automatically injected bundle
-        new HtmlWebpackPlugin({
-            template: 'src/index.html',
-            inject: true,
-            thisEnvironmentType: "DEV" // This is a custom property available in our html via ejs
-        })
-    ],
+    output: getOutputData(environment),
+    plugins: getPlugins(environment),
     module: {
         // This means we can import any of these files with the import keyword
         rules: [{
@@ -29,41 +17,13 @@ export default {
             exclude: /node_modules/,
             use: ['babel-loader']
         }, {
-            test: /\.scss$/,
-            use: [
-                {
-                    loader: 'style-loader'
-                }, {
-                    loader: 'css-loader',
-                    options: {
-                        sourceMap: true
-                    }
-                }, {
-                    loader: 'sass-loader',
-                    options: {
-                        sourceMap: true
-                    }
-                }]
-        }, {
-            test: /\.css$/,
-            use: [
-                {
-                    loader: 'style-loader'
-                }, {
-                    loader: 'css-loader',
-                    options: {
-                        sourceMap: true
-                    }
-                }]
+            test: /\.s?css$/,
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: ['css-loader', 'sass-loader']
+            })
         }]
     }
-}
+};
 
-/**
- * Retrun the absolute path
- * @param location
- * @returns {*|string}
- */
-function ppath(location) {
-    return path.resolve(__dirname, location);
-}
+export default config;
