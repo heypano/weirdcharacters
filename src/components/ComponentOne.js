@@ -46,6 +46,7 @@ class ComponentOne extends React.Component {
                     Hello world!
                 </Tooltip>
                 <div>Current State: &quot;{stateValue}&quot;</div>
+                <Link to="" >HOME</Link><br />
                 <Link to="c2" >C2</Link><br />
                 <button className="thisButton" onClick={this.onButtonClick}>Boop</button>
             </div>

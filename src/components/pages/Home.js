@@ -1,5 +1,6 @@
 import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
+import {Link} from "react-router-dom";
 
 class Home extends React.Component {
     constructor(props) {
@@ -41,6 +42,8 @@ class Home extends React.Component {
             <div>
                 <Jumbotron>
                     <h1 className="display-3">Hello, world!</h1>
+                    <Link to="c1" >C1</Link><br />
+                    <Link to="c2" >C2</Link><br />
                     <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra
                         attention to featured content or information.</p>
                     <hr className="my-2"/>
