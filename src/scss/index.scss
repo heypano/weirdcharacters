@@ -1,11 +1,7 @@
 $background-color: #BABABA;
 $text-color: #123123;
 
-/**
- Font awesome fonts path required by font-awesome -- Set BEFORE importing the font-awesome sass
- */
-$fa-font-path:"../../node_modules/font-awesome/fonts";
-@import '~font-awesome/scss/font-awesome.scss';
+@import '~@fortawesome/fontawesome-free/css/all.css';
 
 
 body {

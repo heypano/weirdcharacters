@@ -44,6 +44,7 @@ class Home extends React.Component {
                     <h1 className="display-3">Hello, world!</h1>
                     <Link to="c1" >C1</Link><br />
                     <Link to="c2" >C2</Link><br />
+                    <i className="fab fa-firefox"></i>
                     <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra
                         attention to featured content or information.</p>
                     <hr className="my-2"/>

@@ -5,7 +5,7 @@
 import path from 'path';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import ExtractTextPlugin from "extract-text-webpack-plugin";
+import ExtractTextPlugin from "mini-css-extract-plugin";
 import webpack from 'webpack';
 import WebpackMd5Hash from "webpack-md5-hash";
 
@@ -80,7 +80,9 @@ export function getCopyPlugins(environment){
  */
 export function getCSSPlugins(environment){
     return [
-        new ExtractTextPlugin("[name].[contenthash].css")
+        new ExtractTextPlugin({
+            filename: "[name].[contenthash].css"
+        })
     ]
 }
 
@@ -142,15 +144,40 @@ export function getPlugins(environment){
         ...getCSSPlugins(environment)
     ];
 
-    if(environment == "PROD"){
-        plugins.push(new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false
-            // Change/Remove this if you want a production source map (Disabling this because it shows up globally as /Users/pano :( Figure out why TBD)
-            // Look into devtoolModuleFilenameTemplate to resolve this issue
-        }))
-    }
-
     return plugins;
+}
+
+
+/**
+ * Return all the rules for webpack
+ * @param environment
+ */
+export function getRules(environment){
+    return [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+    }, {
+        test: /\.s?css$/,
+        use: [
+            {
+                loader: ExtractTextPlugin.loader
+            },
+            {
+                loader: 'css-loader'
+            }
+        ]
+    }, {
+        test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        use: [{
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]',
+                outputPath: 'fonts/'    // where the fonts will go
+                // publicPath: '../'       // override the default path
+            }
+        }]
+    }]
 }
 
 /**
