@@ -1,8 +1,11 @@
 $background-color: #BABABA;
 $text-color: #123123;
 
-@import '~@fortawesome/fontawesome-free/css/all.css';
 
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import 'bootstrap.scss';
+body{
+}
 
 body {
     font-family: "BryantProRegular", 'Helvetica Neue', helvetica, arial, sans-serif, "Helvetica Neue";

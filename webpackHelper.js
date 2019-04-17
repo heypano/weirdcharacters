@@ -81,7 +81,8 @@ export function getCopyPlugins(environment){
 export function getCSSPlugins(environment){
     return [
         new ExtractTextPlugin({
-            filename: "[name].[contenthash].css"
+            filename: "[name].[contenthash].css",
+            chunkFilename: "[name].[contenthash].css"
         })
     ]
 }
@@ -165,6 +166,9 @@ export function getRules(environment){
             },
             {
                 loader: 'css-loader'
+            },
+            {
+                loader: 'sass-loader'
             }
         ]
     }, {
