@@ -5,7 +5,7 @@
 import path from 'path';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import ExtractTextPlugin from "mini-css-extract-plugin";
+import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import webpack from 'webpack';
 import WebpackMd5Hash from "webpack-md5-hash";
 
@@ -80,7 +80,7 @@ export function getCopyPlugins(environment){
  */
 export function getCSSPlugins(environment){
     return [
-        new ExtractTextPlugin({
+        new MiniCSSExtractPlugin({
             filename: "[name].[contenthash].css",
             chunkFilename: "[name].[contenthash].css"
         })
@@ -162,7 +162,7 @@ export function getRules(environment){
         test: /\.s?css$/,
         use: [
             {
-                loader: ExtractTextPlugin.loader
+                loader: MiniCSSExtractPlugin.loader
             },
             {
                 loader: 'css-loader'
