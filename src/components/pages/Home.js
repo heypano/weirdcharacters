@@ -1,6 +1,10 @@
 import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import {Link} from "react-router-dom";
+import Footer from '../Footer';
+import AddTodo from '../../containers/AddTodo';
+import VisibleTodoList from '../../containers/VisibleTodoList';
+
 
 class Home extends React.Component {
     constructor(props) {
@@ -45,15 +49,15 @@ class Home extends React.Component {
                     <Link to="c1" >C1</Link><br />
                     <Link to="c2" >C2</Link><br />
                     <i className="fab fa-firefox"></i>
-                    <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra
-                        attention to featured content or information.</p>
-                    <hr className="my-2"/>
-                    <p>It uses utility classes for typgraphy and spacing to space content out within the larger
-                        container.</p>
                     <p className="lead">
                         <Button color="primary">Learn More</Button>
                     </p>
                 </Jumbotron>
+                <div>
+                    <AddTodo />
+                    <VisibleTodoList />
+                    <Footer />
+                </div>
             </div>
         );
     }
