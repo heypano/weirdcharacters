@@ -15,7 +15,7 @@ const siteAddress = domain + ":" + port;
 server.use(compression());
 server.use(express.static('dist'));
 
-server.get('/', function(req,res) {
+server.get('*', function(req,res) {
     var file = getPath(distDir + entryFile);
     res.sendFile(file);
 });
