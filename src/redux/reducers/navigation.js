@@ -1,3 +1,5 @@
+import {navBarToggle} from "../actions/navigation";
+
 const initialState = {
     navBarOpen: true
 };
@@ -5,8 +7,9 @@ const initialState = {
 export default (state = initialState, action) => {
     switch(action.type){
         // Toggle the nav bar on/off (only matters on mobile)
-        case "navigation/NAV_BAR_TOGGLE":
+        case navBarToggle().type:
             return {
+                ...state,
                 navBarOpen: !state.navBarOpen
             };
         default:
