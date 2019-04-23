@@ -6,6 +6,7 @@ const environment = "PROD";
 
 let config = {
     devtool: 'source-map', // Source map settings - does not impact production as source maps are only downloaded when a user opens dev tools
+    mode: 'production',
     entry: getEntryPoints(environment),
     target: 'web', // You can use "node" or "electron" here
     output: getOutputData(environment),

@@ -4,7 +4,8 @@ import open from 'open';
 import pckg from '../package.json';
 import webpack from 'webpack';
 import webpackConfig from "../webpack.config.dev";
-import middleWare from 'webpack-dev-middleware';
+import devMiddleWare from 'webpack-dev-middleware';
+import connectHistory from 'connect-history-api-fallback';
 
 const config = pckg.config;
 const compiler = webpack(webpackConfig);
@@ -20,9 +21,10 @@ const middleWareSettings = {
 };
 
 
-server.use(middleWare(compiler,middleWareSettings));
+server.use(connectHistory());
+server.use(devMiddleWare(compiler,middleWareSettings));
 
-server.get('/', function(req,res) {
+server.get('*', function(req,res) {
     var file = getPath(srcDir + entryFile);
     res.sendFile(file);
 });
