@@ -1,17 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {UncontrolledTooltip as Tooltip} from 'reactstrap';
+import {navBarToggle} from "../redux/actions/navigation";
+import {connect} from "react-redux";
+import SubComponent from "./SubComponent";
 
 class ComponentOne extends React.Component {
     constructor (props) {
         super(props);
 
         this.bindMethods();
-
-        this.state = {
-            myStateValue: "Default State Value",
-            myOtherStateValue: "Update to myStateValue won't change or delete this"
-        }
     }
 
     /**
@@ -27,7 +25,7 @@ class ComponentOne extends React.Component {
      */
     onButtonClick (e) {
         // This is how we redirect in code
-        this.props.history.push('/c2');
+        this.props.dispatch(navBarToggle());
     }
 
     /**
@@ -35,23 +33,34 @@ class ComponentOne extends React.Component {
      * @returns {*}
      */
     render () {
-        let stateValue = this.state.myStateValue || "No value for myStateValue passed in the state";
-        console.log("props",this.props,"state", this.state);
+        console.log(`PROPS ${JSON.stringify(this.props)}`);
 
         return (
             <div className="componentOne">
-                <h1>This is ComponentOne </h1>
+                <h1>Nav bar is {this.props.navigation.navBarOpen ? "Open" : "Closed"} </h1>
                 <div>with a bootstrap tooltip <span id="TooltipExample">here</span></div>
                 <Tooltip target="TooltipExample">
                     Hello world!
                 </Tooltip>
-                <div>Current State: &quot;{stateValue}&quot;</div>
                 <Link to="" >HOME</Link><br />
                 <Link to="c2" >C2</Link><br />
-                <button className="thisButton" onClick={this.onButtonClick}>Boop</button>
+                <button className="thisButton" onClick={this.onButtonClick}>Toggle thing in subcomponent </button>
+                <SubComponent/>
             </div>
         );
     }
 }
 
-export default ComponentOne;
+/**
+ * mapStateToProps returns the parts of the state that will be available as props
+ * @param state
+ * @returns {{navigation: *}}
+ */
+const mapStateToProps = (state) => {
+    const {navigation} = state;
+    return {
+        navigation
+    };
+};
+
+export default connect(mapStateToProps)(ComponentOne);

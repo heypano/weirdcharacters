@@ -1,9 +1,8 @@
 import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import {Link} from "react-router-dom";
-import Footer from '../Footer';
-import AddTodo from '../../containers/AddTodo';
-import VisibleTodoList from '../../containers/VisibleTodoList';
+import ComponentOne from "../ComponentOne";
+import ComponentTwo from "../ComponentTwo";
 
 
 class Home extends React.Component {
@@ -53,10 +52,15 @@ class Home extends React.Component {
                         <Button color="primary">Learn More</Button>
                     </p>
                 </Jumbotron>
-                <div>
-                    <AddTodo />
-                    <VisibleTodoList />
-                    <Footer />
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <ComponentOne/>
+                        </div>
+                        <div className="col">
+                            <ComponentTwo/>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
