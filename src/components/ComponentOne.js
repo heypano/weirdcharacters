@@ -33,7 +33,6 @@ class ComponentOne extends React.Component {
      * @returns {*}
      */
     render () {
-        console.log(`PROPS ${JSON.stringify(this.props)}`);
 
         return (
             <div className="componentOne">

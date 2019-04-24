@@ -3,6 +3,10 @@ import { Jumbotron, Button } from 'reactstrap';
 import {Link} from "react-router-dom";
 import ComponentOne from "../ComponentOne";
 import ComponentTwo from "../ComponentTwo";
+import {getCats, getCats2, getCats3} from "../../api/cats";
+import {connect} from "react-redux";
+import _ from "lodash";
+import {allCatsLoaded} from "../../redux/actions/cats";
 
 
 class Home extends React.Component {
@@ -10,11 +14,22 @@ class Home extends React.Component {
         super(props);
 
         this.bindMethods();
+        Promise.all([
+            getCats(),
+            getCats2(),
+            getCats3(),
+        ]).then(responses => {
+            const allCats = [
+                ...responses[0].cats,
+                ...responses[1].cats,
+                ...responses[2].cats,
+            ].sort((a,b) => a.name.localeCompare(b.name));
 
-        this.state = {
-            myStateValue: "Default State Value",
-            myOtherStateValue: "Update to myStateValue won't change or delete this"
-        }
+            this.props.dispatch(allCatsLoaded(allCats));
+            console.log("All done", allCats);
+        }).catch(error => {
+            console.log("Error", error)
+        });
     }
 
 
@@ -39,18 +54,14 @@ class Home extends React.Component {
      * @returns {*}
      */
     render() {
-        let stateValue = this.state.myStateValue || "No value for myStateValue passed in the state";
-        console.log("props", this.props, "state", this.state);
         return (
             <div>
                 <Jumbotron>
-                    <h1 className="display-3">Hello, world!</h1>
-                    <Link to="c1" >C1</Link><br />
-                    <Link to="c2" >C2</Link><br />
-                    <i className="fab fa-firefox"></i>
-                    <p className="lead">
-                        <Button color="primary">Learn More</Button>
-                    </p>
+                    <h1 className="display-3">Cats!</h1>
+                    {/*<Link to="c1" >C1</Link><br />*/}
+                    {/*<Link to="c2" >C2</Link><br />*/}
+
+                    <Cats cats={this.props.cats}/>
                 </Jumbotron>
                 <div className="container">
                     <div className="row">
@@ -67,4 +78,35 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+/**
+ * Render the list of cats (stateless component)
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
+function Cats(props){
+    const {cats} = props;
+    if(cats.allCatsLoaded && cats.cats.length){
+        return (<div>
+            {cats.cats.map((c) => (<div key={c.name}>
+                <i className="fa fa-cat"></i>&nbsp;<strong>{c.name}</strong>: {c.description}
+            </div>))}
+        </div>);
+    } else {
+        return null;
+    }
+}
+/**
+ * mapStateToProps returns the parts of the state that will be available as props
+ * @param state
+ * @returns {{navigation: *}}
+ */
+const mapStateToProps = (state) => {
+    const {navigation, cats} = state;
+    return {
+        navigation,
+        cats
+    };
+};
+
+export default connect(mapStateToProps)(Home);

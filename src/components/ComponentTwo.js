@@ -38,7 +38,6 @@ class ComponentTwo extends React.Component {
     render () {
         let valuePassedAsAProp = this.props.valuePassedAsAProp || "No value for valuePassedAsAProp passed in the props";
         let stateValue = this.state.myStateValue || "No value for myStateValue passed in the state";
-        console.log(this.props, this.state);
 
         return (
             <div className="componentTwo">

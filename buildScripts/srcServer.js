@@ -6,6 +6,7 @@ import webpack from 'webpack';
 import webpackConfig from "../webpack.config.dev";
 import devMiddleWare from 'webpack-dev-middleware';
 import connectHistory from 'connect-history-api-fallback';
+import setupMockDataPaths from './expressmockdata';
 
 const config = pckg.config;
 const compiler = webpack(webpackConfig);
@@ -20,6 +21,7 @@ const middleWareSettings = {
     publicPath: webpackConfig.output.publicPath
 };
 
+setupMockDataPaths(server);
 
 server.use(connectHistory());
 server.use(devMiddleWare(compiler,middleWareSettings));
@@ -37,17 +39,7 @@ server.listen(port, function (err) {
     }
 });
 
-server.get('/cats', function(req,res) {
-    res.json({
-        cats: [{
-            name: "Dexter",
-            description: "Chill Cat"
-        }, {
-            name: "Manoli",
-            description: "Hilarious Cat"
-        }]
-    })
-});
+
 
 function getPath (location) {
     return path.join(__dirname, location);
