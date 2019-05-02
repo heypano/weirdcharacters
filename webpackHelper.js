@@ -41,6 +41,7 @@ export function getOutputData(environment){
     const outputPath = (environment === "PROD") ? ppath('dist') : ppath('src');
     return {
         path: outputPath,
+        publicPath: '/',
         filename: 'bundle.[name].[chunkhash].js'
     }
 }
