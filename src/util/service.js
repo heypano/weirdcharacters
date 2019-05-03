@@ -57,7 +57,18 @@ function post(url, data){
  * @param response
  */
 function onSuccess(response){
-    return response.json();
+    if (response.ok) {
+        return response.json();
+    } else {
+        return response.json().then(result => {
+            let errors = result.errors;
+            if (errors) {
+                return Promise.reject(errors);
+            } else {
+                return Promise.reject(response.statusText);
+            }
+        });
+    }
 }
 
 /**
