@@ -76,7 +76,7 @@ function onSuccess(response){
  * @param error
  */
 function onError(error){
-    console.log("error", error);
+    return Promise.reject(error);
 }
 
 /**
