@@ -25,7 +25,6 @@ const pageList = [
 export function getEntryPoints(environment){
     return {
         index: [
-            "babel-polyfill",
             "whatwg-fetch",
             ppath('src/index')
         ]
