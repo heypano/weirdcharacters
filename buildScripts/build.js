@@ -5,6 +5,7 @@ import chalk from 'chalk';
 const [r, y, b, g, i] = [chalk.red, chalk.yellow, chalk.blue, chalk.green, chalk.inverse];
 
 process.env.NODE_ENV = 'production';
+process.traceDeprecation = true;
 
 console.log(b("Generating minified bundle at "+ webpackConfig.output.path + '/' + webpackConfig.output.filename));
 

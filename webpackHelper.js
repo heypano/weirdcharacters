@@ -7,7 +7,6 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import webpack from 'webpack';
-import WebpackMd5Hash from "webpack-md5-hash";
 
 const pageList = [
     {
@@ -138,8 +137,6 @@ export function getHTMLPlugins(environment){
  */
 export function getPlugins(environment){
     const plugins =  [
-        // Hash the files using MD5 so that their names change when the content changes
-        new WebpackMd5Hash(),
         ...getCopyPlugins(environment),
         ...getHTMLPlugins(environment),
         ...getCSSPlugins(environment)

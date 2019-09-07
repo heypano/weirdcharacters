@@ -8,6 +8,9 @@ import devMiddleWare from 'webpack-dev-middleware';
 import connectHistory from 'connect-history-api-fallback';
 import setupMockDataPaths from './expressmockdata';
 
+process.env.NODE_ENV = 'development';
+process.traceDeprecation = true;
+
 const config = pckg.config;
 const compiler = webpack(webpackConfig);
 const port = config.server.port;
