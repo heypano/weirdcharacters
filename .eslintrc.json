@@ -10,7 +10,7 @@
     "parserOptions": {
         "ecmaVersion": 7,
         "sourceType": "module",
-        "ecmaFeatures":  {
+        "ecmaFeatures": {
             "experimentalObjectRestSpread": true
         }
     },
