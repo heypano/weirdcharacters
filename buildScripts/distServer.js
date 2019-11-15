@@ -1,8 +1,8 @@
-import express from 'express';
-import path from 'path';
-import open from 'open';
-import pckg from '../package.json';
-import compression from 'compression';
+import express from "express";
+import path from "path";
+import open from "open";
+import pckg from "../package.json";
+import compression from "compression";
 import setupMockDataPaths from "./expressmockdata";
 
 const config = pckg.config;
@@ -16,21 +16,21 @@ const siteAddress = domain + ":" + port;
 setupMockDataPaths(server);
 
 server.use(compression());
-server.use(express.static('dist'));
+server.use(express.static("dist"));
 
-server.get('*', function(req,res) {
+server.get("*", function(req, res) {
     var file = getPath(distDir + entryFile);
     res.sendFile(file);
 });
 
-server.listen(port, function (err) {
+server.listen(port, function(err) {
     if (err) {
         console.error(err);
     } else {
-        open(siteAddress)
+        open(siteAddress);
     }
 });
 
-function getPath (location) {
+function getPath(location) {
     return path.join(__dirname, location);
 }

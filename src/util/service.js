@@ -1,6 +1,6 @@
-import getBaseUrl from '../api/baseUrl';
+import getBaseUrl from "../api/baseUrl";
 
-const debug = (window.thisEnvironmentType === "PROD");
+const debug = window.thisEnvironmentType === "PROD";
 console.log("Debug: ", debug);
 const baseUrl = getBaseUrl(debug);
 
@@ -8,12 +8,12 @@ const baseUrl = getBaseUrl(debug);
  * Tries to figure out the appropriate URL to request for a service
  * If a URL starts with http, https or // we will assume it is an external URL
  */
-function getURLToFetch(url){
+function getURLToFetch(url) {
     let externalURLRegex = /^http|^https|^\/\//;
     let urlToFetch;
 
     // Do not edit external URLs
-    if(externalURLRegex.test(url)){
+    if (externalURLRegex.test(url)) {
         urlToFetch = url;
     } else {
         urlToFetch = baseUrl + url;
@@ -27,7 +27,7 @@ function getURLToFetch(url){
  * @param {string} url
  * @returns {Promise<Response>}
  */
-function get(url){
+function get(url) {
     const urlToFetch = getURLToFetch(url);
     return fetch(urlToFetch).then(onSuccess, onError);
 }
@@ -37,26 +37,25 @@ function get(url){
  * @param {string} url
  * @param data
  */
-function post(url, data){
+function post(url, data) {
     const urlToFetch = getURLToFetch(url);
     const fetchConfig = {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         }
     };
-    if(data){
-        fetchConfig.body = JSON.stringify(data)
+    if (data) {
+        fetchConfig.body = JSON.stringify(data);
     }
     return fetch(urlToFetch, fetchConfig).then(onSuccess, onError);
 }
-
 
 /**
  * First step to the response here - actual response is in the next then (), response handler defined elsewhere
  * @param response
  */
-function onSuccess(response){
+function onSuccess(response) {
     if (response.ok) {
         return response.json();
     } else {
@@ -75,7 +74,7 @@ function onSuccess(response){
  * Primary error handler
  * @param error
  */
-function onError(error){
+function onError(error) {
     return Promise.reject(error);
 }
 

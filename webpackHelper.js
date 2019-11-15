@@ -2,16 +2,16 @@
  * The point of this file is to automate some of the repetitive webpack definitions, especially as it relates to prod vs dev
  */
 
-import path from 'path';
+import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
-import webpack from 'webpack';
+import webpack from "webpack";
 
 const pageList = [
     {
         template: "src/index.html", // What is the source for this
-        chunks: ['index'], // What bundle should be loaded here?
+        chunks: ["index"], // What bundle should be loaded here?
         filename: "index.html" // Where does the output go?
     }
 ];
@@ -21,12 +21,9 @@ const pageList = [
  * @param {"DEV" | "PROD"} environment
  * @returns {Object}
  */
-export function getEntryPoints(environment){
+export function getEntryPoints(environment) {
     return {
-        index: [
-            "whatwg-fetch",
-            ppath('src/index')
-        ]
+        index: ["whatwg-fetch", ppath("src/index")]
     };
 }
 
@@ -35,13 +32,13 @@ export function getEntryPoints(environment){
  * @param environment
  * @returns {{path: *|string, filename: string}}
  */
-export function getOutputData(environment){
-    const outputPath = (environment === "PROD") ? ppath('dist') : ppath('src');
+export function getOutputData(environment) {
+    const outputPath = environment === "PROD" ? ppath("dist") : ppath("src");
     return {
         path: outputPath,
-        publicPath: '/',
-        filename: 'bundle.[name].[chunkhash].js'
-    }
+        publicPath: "/",
+        filename: "bundle.[name].[chunkhash].js"
+    };
 }
 
 /**
@@ -49,11 +46,11 @@ export function getOutputData(environment){
  * @param environment
  * @returns {string}
  */
-export function getSubdirectory(environment){
-    if(environment === "DEV"){
+export function getSubdirectory(environment) {
+    if (environment === "DEV") {
         return "";
     } else {
-        return ""
+        return "";
     }
 }
 
@@ -63,13 +60,13 @@ export function getSubdirectory(environment){
  * @param {"DEV" | "PROD"} environment
  * @returns {Array}
  */
-export function getCopyPlugins(environment){
+export function getCopyPlugins(environment) {
     return [
         new CopyWebpackPlugin([
             // Put files here that need to be directly copied
             //  { from: 'src/sampleNonCrisisConfig.json', to: 'sampleNonCrisisConfig.json' },
         ])
-    ]
+    ];
 }
 
 /**
@@ -77,13 +74,13 @@ export function getCopyPlugins(environment){
  * @param environment
  * @returns {*[]}
  */
-export function getCSSPlugins(environment){
+export function getCSSPlugins(environment) {
     return [
         new MiniCSSExtractPlugin({
             filename: "[name].[contenthash].css",
             chunkFilename: "[name].[contenthash].css"
         })
-    ]
+    ];
 }
 
 /**
@@ -91,13 +88,14 @@ export function getCSSPlugins(environment){
  * @param {"DEV" | "PROD"} environment
  * @returns {Array}
  */
-export function getHTMLPlugins(environment){
+export function getHTMLPlugins(environment) {
     const prodParams = {
         inject: true,
         thisEnvironmentType: "PROD", // This is a custom property available in our html via ejs
         thisSubdirectory: getSubdirectory("PROD"),
         buildTimestamp: new Date(),
-        minify: { // Lots of options for minifying here
+        minify: {
+            // Lots of options for minifying here
             removeComments: true,
             collapseWhitespace: true,
             removeRedundantAttributes: true,
@@ -117,12 +115,12 @@ export function getHTMLPlugins(environment){
         buildTimestamp: new Date()
     };
 
-    const baseParams = (environment === "PROD") ? prodParams: devParams;
+    const baseParams = environment === "PROD" ? prodParams : devParams;
     const pluginArray = [];
 
     pageList.forEach(page => {
         const pageConfig = Object.assign({}, page, baseParams); // Combine page data and baseParams
-        if(Object.keys(pageConfig)){
+        if (Object.keys(pageConfig)) {
             const plugin = new HtmlWebpackPlugin(pageConfig);
             pluginArray.push(plugin);
         }
@@ -135,8 +133,8 @@ export function getHTMLPlugins(environment){
  * Return all the plugins for webpack
  * @param environment
  */
-export function getPlugins(environment){
-    const plugins =  [
+export function getPlugins(environment) {
+    const plugins = [
         ...getCopyPlugins(environment),
         ...getHTMLPlugins(environment),
         ...getCSSPlugins(environment)
@@ -145,47 +143,52 @@ export function getPlugins(environment){
     return plugins;
 }
 
-
 /**
  * Return all the rules for webpack
  * @param environment
  */
-export function getRules(environment){
-    return [{
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-    }, {
-        test: /\.s?css$/,
-        use: [
-            {
-                loader: MiniCSSExtractPlugin.loader
-            },
-            {
-                loader: 'css-loader',
-                options: {
-                    sourceMap: true,
-                    importLoaders: 1
+export function getRules(environment) {
+    return [
+        {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: ["babel-loader"]
+        },
+        {
+            test: /\.s?css$/,
+            use: [
+                {
+                    loader: MiniCSSExtractPlugin.loader
+                },
+                {
+                    loader: "css-loader",
+                    options: {
+                        sourceMap: true,
+                        importLoaders: 1
+                    }
+                },
+                {
+                    loader: "postcss-loader"
+                },
+                {
+                    loader: "sass-loader"
                 }
-            },
-            {
-                loader: 'postcss-loader'
-            },
-            {
-                loader: 'sass-loader'
-            }
-        ]
-    }, {
-        test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        use: [{
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]',
-                outputPath: 'fonts/'    // where the fonts will go
-                // publicPath: '../'       // override the default path
-            }
-        }]
-    }]
+            ]
+        },
+        {
+            test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+            use: [
+                {
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[ext]",
+                        outputPath: "fonts/" // where the fonts will go
+                        // publicPath: '../'       // override the default path
+                    }
+                }
+            ]
+        }
+    ];
 }
 
 /**

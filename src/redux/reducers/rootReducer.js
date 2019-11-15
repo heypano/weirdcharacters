@@ -1,5 +1,5 @@
-import {combineReducers} from "redux";
-import navigation from './navigation';
+import { combineReducers } from "redux";
+import navigation from "./navigation";
 import cats from "./cats";
 
 // https://redux.js.org/api/combinereducers

@@ -1,14 +1,19 @@
-import path from 'path';
-import webpack from 'webpack';
-import {getPlugins, getEntryPoints, getOutputData, getRules} from './webpackHelper';
+import path from "path";
+import webpack from "webpack";
+import {
+    getPlugins,
+    getEntryPoints,
+    getOutputData,
+    getRules
+} from "./webpackHelper";
 
 const environment = "PROD";
 
 let config = {
-    devtool: 'source-map', // Source map settings - does not impact production as source maps are only downloaded when a user opens dev tools
-    mode: 'production',
+    devtool: "source-map", // Source map settings - does not impact production as source maps are only downloaded when a user opens dev tools
+    mode: "production",
     entry: getEntryPoints(environment),
-    target: 'web', // You can use "node" or "electron" here
+    target: "web", // You can use "node" or "electron" here
     output: getOutputData(environment),
     plugins: getPlugins(environment),
     module: {

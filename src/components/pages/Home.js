@@ -1,37 +1,33 @@
-import React from 'react';
-import { Jumbotron, Button } from 'reactstrap';
-import {Link} from "react-router-dom";
+import React from "react";
+import { Jumbotron, Button } from "reactstrap";
+import { Link } from "react-router-dom";
 import ComponentOne from "../ComponentOne";
 import ComponentTwo from "../ComponentTwo";
-import {getCats, getCats2, getCats3} from "../../api/cats";
-import {connect} from "react-redux";
+import { getCats, getCats2, getCats3 } from "../../api/cats";
+import { connect } from "react-redux";
 import _ from "lodash";
-import {allCatsLoaded} from "../../redux/actions/cats";
-
+import { allCatsLoaded } from "../../redux/actions/cats";
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
 
         this.bindMethods();
-        Promise.all([
-            getCats(),
-            getCats2(),
-            getCats3(),
-        ]).then(responses => {
-            const allCats = [
-                ...responses[0].cats,
-                ...responses[1].cats,
-                ...responses[2].cats,
-            ].sort((a,b) => a.name.localeCompare(b.name));
+        Promise.all([getCats(), getCats2(), getCats3()])
+            .then(responses => {
+                const allCats = [
+                    ...responses[0].cats,
+                    ...responses[1].cats,
+                    ...responses[2].cats
+                ].sort((a, b) => a.name.localeCompare(b.name));
 
-            this.props.dispatch(allCatsLoaded(allCats));
-            console.log("All done", allCats);
-        }).catch(error => {
-            console.log("Error", error)
-        });
+                this.props.dispatch(allCatsLoaded(allCats));
+                console.log("All done", allCats);
+            })
+            .catch(error => {
+                console.log("Error", error);
+            });
     }
-
 
     /**
      * Bind the various handlers to make sure they are attached to this class
@@ -46,7 +42,7 @@ class Home extends React.Component {
      */
     onButtonClick(e) {
         // This is how we redirect in code
-        this.props.history.push('/c2');
+        this.props.history.push("/c2");
     }
 
     /**
@@ -61,15 +57,15 @@ class Home extends React.Component {
                     {/*<Link to="c1" >C1</Link><br />*/}
                     {/*<Link to="c2" >C2</Link><br />*/}
 
-                    <Cats cats={this.props.cats}/>
+                    <Cats cats={this.props.cats} />
                 </Jumbotron>
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <ComponentOne/>
+                            <ComponentOne />
                         </div>
                         <div className="col">
-                            <ComponentTwo/>
+                            <ComponentTwo />
                         </div>
                     </div>
                 </div>
@@ -84,14 +80,19 @@ class Home extends React.Component {
  * @returns {*}
  * @constructor
  */
-function Cats(props){
-    const {cats} = props;
-    if(cats.allCatsLoaded && cats.cats.length){
-        return (<div>
-            {cats.cats.map((c) => (<div key={c.name}>
-                <i className="fa fa-cat"></i>&nbsp;<strong>{c.name}</strong>: {c.description}
-            </div>))}
-        </div>);
+function Cats(props) {
+    const { cats } = props;
+    if (cats.allCatsLoaded && cats.cats.length) {
+        return (
+            <div>
+                {cats.cats.map(c => (
+                    <div key={c.name}>
+                        <i className="fa fa-cat"></i>&nbsp;
+                        <strong>{c.name}</strong>: {c.description}
+                    </div>
+                ))}
+            </div>
+        );
     } else {
         return null;
     }
@@ -101,8 +102,8 @@ function Cats(props){
  * @param state
  * @returns {{navigation: *}}
  */
-const mapStateToProps = (state) => {
-    const {navigation, cats} = state;
+const mapStateToProps = state => {
+    const { navigation, cats } = state;
     return {
         navigation,
         cats

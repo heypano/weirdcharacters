@@ -1,14 +1,20 @@
-import chalk from 'chalk';
+import chalk from "chalk";
 var [nodeExecutable, thisScript, ...args] = process.argv;
-var [r, y, b, g, i] = [chalk.red, chalk.yellow, chalk.blue, chalk.green, chalk.inverse];
+var [r, y, b, g, i] = [
+    chalk.red,
+    chalk.yellow,
+    chalk.blue,
+    chalk.green,
+    chalk.inverse
+];
 processHelpArguments(args);
 
 /**
  * Process different help commands
  * @param args
  */
-function processHelpArguments(args){
-    switch(args.length){
+function processHelpArguments(args) {
+    switch (args.length) {
         case 0:
             generalHelp();
             break;
@@ -23,15 +29,13 @@ function processHelpArguments(args){
 /**
  * Print General Info here
  */
-function generalHelp () {
-
-}
+function generalHelp() {}
 
 /**
  * Print info about a specific command
  * @param {String} type
  */
-function processHelpByType (type) {
+function processHelpByType(type) {
     pp(type);
 }
 
@@ -39,11 +43,11 @@ function processHelpByType (type) {
  * Print something more complicated
  * @param args
  */
-function processComplicatedArguments (args) {
+function processComplicatedArguments(args) {
     console.log(y("Nothing here for now"));
 }
 
-function pp () {
+function pp() {
     [...arguments].forEach(argument => {
         var string = JSON.stringify(argument, null, 2);
         console.log(b(string));

@@ -1,11 +1,11 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {UncontrolledTooltip as Tooltip} from 'reactstrap';
-import {navBarToggle} from "../redux/actions/navigation";
-import {connect} from "react-redux";
+import React from "react";
+import { Link } from "react-router-dom";
+import { UncontrolledTooltip as Tooltip } from "reactstrap";
+import { navBarToggle } from "../redux/actions/navigation";
+import { connect } from "react-redux";
 
 class SubComponent extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
     }
 
@@ -13,7 +13,7 @@ class SubComponent extends React.Component {
      * Render the component based on the state and props (will be called every time state changes with setState)
      * @returns {*}
      */
-    render () {
+    render() {
         const className = this.props.navigation.navBarOpen ? "" : "d-none";
         return (
             <div className={className}>
@@ -28,8 +28,8 @@ class SubComponent extends React.Component {
  * @param state
  * @returns {{navigation: *}}
  */
-const mapStateToProps = (state) => {
-    const {navigation} = state;
+const mapStateToProps = state => {
+    const { navigation } = state;
     return {
         navigation
     };
