@@ -16,7 +16,7 @@
         "build": "babel-node buildScripts/build.js",
         "distserver": "babel-node buildScripts/distServer.js",
         "start": "npm-run-all --parallel open:src lint:watch",
-        "prettier": "prettier  --write \"**/*.js\"",
+        "prettier": "prettier  --write \"**/*.{js,jsx,json,scss,css,html}\"",
         "open:src": "babel-node buildScripts/srcServer.js",
         "localtunnel": "lt --port $npm_package_config_server_port --subdomain heypano",
         "localtunnel_help": "echo \"Localtunnel exposes port $npm_package_config_server_port ($$npm_package_config_server_port) at a url (https://localtunnel.github.io/www/)\"",
