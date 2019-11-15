@@ -1,6 +1,6 @@
 /**
  *
- * @param {Boolean} debug - is this a debug
+ * @param {Boolean} debug - is this a debug environment
  */
 export default function getBaseUrl(debug){
     // Could also do this based on GET param
