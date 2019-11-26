@@ -8,6 +8,9 @@ import rootReducer from "./reducers/rootReducer";
 const logger = createLogger();
 const middlewares = _.compact([thunk, reduxFreeze, logger]);
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-const store = createStoreWithMiddleware(rootReducer);
+const store = createStoreWithMiddleware(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store;
