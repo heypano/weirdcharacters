@@ -151,7 +151,6 @@ export function getRules(environment) {
     return [
         {
             test: /\.js$/,
-            exclude: /node_modules/,
             use: ["babel-loader"]
         },
         {
