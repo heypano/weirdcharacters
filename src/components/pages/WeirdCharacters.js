@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { symbolSearch } from "../../redux/actions/navigation";
 import { getSymbolSearchValue } from "../../redux/selectors/navigation";
+import MetaTags from "react-meta-tags";
 
 const weirds = ["γ⃣", "γ̸̨̲̙̪̗̠̬̑̅̃͑̿̾", "γ⃝", "γ҉", "γ̶", "γ̴", "γ̷", "γ̲", "γ̳", "γ̾", "γ͎", "γ͓̽"];
 
@@ -13,7 +14,7 @@ const weirds = ["γ⃣", "γ̸̨̲̙̪̗̠̬̑̅̃͑̿̾", "γ⃝", "γ҉", "γ�
  */
 const WeirdText = ({ children }) => {
     const characters = [...children.toString()];
-
+    let description = "";
     return (
         <div className="weird-letter card">
             <div className="card-body">
@@ -28,10 +29,12 @@ const WeirdText = ({ children }) => {
                             {characters.map((char, i) => {
                                 const hexCode = char.codePointAt(0).toString();
                                 const html = `&#${hexCode};`;
+                                const url = `https://www.codetable.net/decimal/${hexCode}`;
+                                description += `${html} ${url}\n`;
                                 return (
                                     <span className="weird-code" key={i}>
                                         <a
-                                            href={`https://www.codetable.net/decimal/${hexCode}`}
+                                            href={url}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
@@ -44,6 +47,13 @@ const WeirdText = ({ children }) => {
                                     </span>
                                 );
                             })}
+                            <MetaTags>
+                                <meta property="og:title" content={children} />
+                                <meta
+                                    property="og:description"
+                                    content={description}
+                                />
+                            </MetaTags>
                         </div>
                         <div className="col weird-letter-parts-numbers">
                             {characters.map((char, i) => {
