@@ -94,11 +94,14 @@ const WeirdCharacters = props => {
                             </a>
                         </div>
                         <label>Try some text:</label>
-                        <input
-                            onChange={onSymbolSearch}
-                            type="text"
-                            defaultValue={urlSearchValue}
-                        />
+                        <div>
+                            <textarea
+                                className="w-100"
+                                onChange={onSymbolSearch}
+                                type="text"
+                                defaultValue={urlSearchValue}
+                            />
+                        </div>
                     </div>
                     <div className="weird-letters">
                         {!searchValue &&
