@@ -66,6 +66,10 @@ const WeirdText = ({ children }) => {
                                     property="og:description"
                                     content={description}
                                 />
+                                <meta
+                                    property="description"
+                                    content={description}
+                                />
                             </MetaTags>
                         </div>
                         <div className="col weird-letter-parts-numbers">
