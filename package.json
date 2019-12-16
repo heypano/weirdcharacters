@@ -1,7 +1,7 @@
 {
-    "name": "heypano-web-starter-kit",
-    "version": "1.0.1",
-    "description": "Pano's JS (Web Dev) starter kit",
+    "name": "experiments",
+    "version": "1.0.0",
+    "description": "Pano's JS experiments",
     "main": "index.js",
     "browserslist": "last 3 versions",
     "config": {
@@ -11,8 +11,8 @@
         }
     },
     "scripts": {
-        "clean-dist": "rimraf ./dist && mkdir dist",
-        "prebuild": "npm-run-all clean-dist test lint",
+        "clean-docs": "rimraf ./docs && mkdir docs",
+        "prebuild": "npm-run-all clean-docs test lint",
         "build": "babel-node buildScripts/build.js",
         "distserver": "babel-node buildScripts/distServer.js",
         "start": "npm-run-all --parallel open:src lint:watch",
@@ -101,7 +101,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/heypano/web-starter-kit.git"
+        "url": "git+https://github.com/heypano/experiments.git"
     },
     "keywords": [
         "js",
@@ -113,7 +113,7 @@
     "author": "Pano Papadatos (www.heypano.com)",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/heypano/web-starter-kit/issues"
+        "url": "https://github.com/heypano/experiments/issues"
     },
-    "homepage": "https://github.com/heypano/web-starter-kit#readme"
+    "homepage": "https://github.com/heypano/experiments#readme"
 }

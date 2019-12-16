@@ -1,5 +1,5 @@
-# web-starter-kit
-Pano's JS (Web Dev) starter kit
+# experiments
+Pano's JS experiments
 
 ## Build Commands
 
@@ -14,11 +14,11 @@ Pano's JS (Web Dev) starter kit
 
 #### `npm run build`
 
-- Build the final product in the ./dist directory. To deploy, just move the contents of ./dist to a deployed directory.
+- Build the final product in the ./docs directory. To deploy, just move the contents of ./docs to a deployed directory.
 
 #### `npm run distserver`
 
-- Serve the contents of ./dist to `localhost:3000`. 
+- Serve the contents of ./docs to `localhost:3000`. 
 
 #### `npm run start`
 

@@ -33,7 +33,7 @@ export function getEntryPoints(environment) {
  * @returns {{path: *|string, filename: string}}
  */
 export function getOutputData(environment) {
-    const outputPath = environment === "PROD" ? ppath("dist") : ppath("src");
+    const outputPath = environment === "PROD" ? ppath("docs") : ppath("src");
     return {
         path: outputPath,
         publicPath: "/",

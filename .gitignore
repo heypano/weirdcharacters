@@ -1,5 +1,5 @@
 # Do not commit build by default
-dist
+docs
 
 # Webstorm Files
 .idea/

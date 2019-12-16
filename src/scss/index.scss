@@ -1,12 +1,48 @@
-$background-color: #bababa;
-$text-color: #123123;
-
 @import "~@fortawesome/fontawesome-free/css/all.css";
 @import "bootstrap.scss";
+@import "bootstrap_variable_overrides.scss";
 
 body {
     font-family: "BryantProRegular", "Helvetica Neue", helvetica, arial,
         sans-serif, "Helvetica Neue";
     background-color: $background-color;
     color: $text-color;
+}
+
+.container {
+    padding-top: 60px;
+}
+
+.weird-letters {
+    font-size: 40px;
+    .weird-letter {
+        padding: 25px;
+    }
+    .weird-letter-content {
+        line-height: 1;
+        background: darken($background-color, 10%);
+    }
+    .weird-code {
+        padding-right: 16px;
+        a {
+            padding: 10px;
+        }
+        &::after {
+            content: " and ";
+            font-size: 0.8em;
+        }
+        &:last-of-type::after {
+            content: none;
+        }
+    }
+    .weird-letter-parts-numbers,
+    .weird-letter-parts {
+        font-size: 0.5em;
+    }
+    //display: flex;
+    //flex-direction: row;
+    //flex-wrap: wrap;
+    //.weird-letter{
+    //    flex: 1 0 100px;
+    //}
 }

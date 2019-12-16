@@ -1,13 +1,11 @@
 import React from "react";
-import ComponentTwo from "../components/ComponentTwo";
-import ComponentOne from "../components/ComponentOne";
 import { Switch, Route } from "react-router-dom";
 import Home from "../components/pages/Home";
+import WeirdCharacters from "../components/pages/WeirdCharacters";
 
 export default (
     <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/c1" component={ComponentOne} />
-        <Route path="/c2" component={ComponentTwo} />
+        <Route exact path="/" component={WeirdCharacters} />
+        <Route exact path="/weird" component={WeirdCharacters} />
     </Switch>
 );
