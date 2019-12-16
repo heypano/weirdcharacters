@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { symbolSearch } from "../../redux/actions/navigation";
+import { getSymbolSearchValue } from "../../redux/selectors/navigation";
 
 const weirds = ["γ⃣", "γ̸̨̲̙̪̗̠̬̑̅̃͑̿̾", "γ⃝", "γ҉", "γ̶", "γ̴", "γ̷", "γ̲", "γ̳", "γ̾", "γ͎", "γ͓̽"];
 
@@ -73,21 +75,35 @@ const WeirdText = ({ children }) => {
  * React class to show some weirc characters
  */
 const WeirdCharacters = props => {
+    const { searchValue, onSymbolSearch } = props;
+    console.log(searchValue);
     return (
         <div className="container">
             <div className="row">
                 <div className="col">
+                    <h1>Weird Characters</h1>
+                    <div className="search-area">
+                        <div>
+                            <a
+                                href="https://www.ssec.wisc.edu/~tomw/java/unicode.html"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Related Info: Unicode ranges info
+                            </a>
+                        </div>
+                        <label>Try some text:</label>
+                        <input onChange={onSymbolSearch} type="text" />
+                    </div>
                     <div className="weird-letters">
-                        <a
-                            href="https://www.ssec.wisc.edu/~tomw/java/unicode.html"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Unicode ranges info
-                        </a>
-                        {weirds.map((text, index) => (
-                            <WeirdText key={`char_${index}`}>{text}</WeirdText>
-                        ))}
+                        {searchValue}
+                        {!searchValue &&
+                            weirds.map((text, index) => (
+                                <WeirdText key={`char_${index}`}>
+                                    {text}
+                                </WeirdText>
+                            ))}
+                        {searchValue && <WeirdText>{searchValue}</WeirdText>}
                     </div>
                 </div>
             </div>
@@ -102,7 +118,10 @@ const WeirdCharacters = props => {
  * @returns {}
  */
 const mapStateToProps = (state, ownProps) => {
-    return {};
+    console.log("mapping", getSymbolSearchValue(state));
+    return {
+        searchValue: getSymbolSearchValue(state)
+    };
 };
 
 /**
@@ -111,7 +130,11 @@ const mapStateToProps = (state, ownProps) => {
  * @returns {}
  */
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return {};
+    return {
+        onSymbolSearch: event => {
+            dispatch(symbolSearch(event.target.value));
+        }
+    };
 };
 
-export default connect(mapStateToProps)(WeirdCharacters);
+export default connect(mapStateToProps, mapDispatchToProps)(WeirdCharacters);

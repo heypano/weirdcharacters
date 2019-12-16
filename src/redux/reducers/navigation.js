@@ -1,7 +1,8 @@
 import { navBarToggle } from "../actions/navigation";
 
 const initialState = {
-    navBarOpen: true
+    navBarOpen: true,
+    searchValue: ""
 };
 
 export default (state = initialState, action) => {
@@ -11,6 +12,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 navBarOpen: !state.navBarOpen
+            };
+        case "navigation/SEARCH":
+            return {
+                ...state,
+                searchValue: action.payload
             };
         default:
             return state;
