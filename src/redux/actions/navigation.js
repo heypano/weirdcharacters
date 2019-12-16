@@ -4,7 +4,10 @@ export const navBarToggle = () => ({
 });
 
 // Search for a symbol
-export const symbolSearch = value => ({
-    type: "navigation/SEARCH",
-    payload: value
-});
+export const symbolSearch = (value, history) => {
+    history.push(`/${encodeURIComponent(value)}`);
+    return {
+        type: "navigation/SEARCH",
+        payload: value
+    };
+};

@@ -75,8 +75,9 @@ const WeirdText = ({ children }) => {
  * React class to show some weirc characters
  */
 const WeirdCharacters = props => {
-    const { searchValue, onSymbolSearch } = props;
-    console.log(searchValue);
+    const { searchValue, onSymbolSearch, match } = props;
+    const { urlSearchValue } = match.params;
+
     return (
         <div className="container">
             <div className="row">
@@ -93,10 +94,13 @@ const WeirdCharacters = props => {
                             </a>
                         </div>
                         <label>Try some text:</label>
-                        <input onChange={onSymbolSearch} type="text" />
+                        <input
+                            onChange={onSymbolSearch}
+                            type="text"
+                            defaultValue={urlSearchValue}
+                        />
                     </div>
                     <div className="weird-letters">
-                        {searchValue}
                         {!searchValue &&
                             weirds.map((text, index) => (
                                 <WeirdText key={`char_${index}`}>
@@ -118,7 +122,6 @@ const WeirdCharacters = props => {
  * @returns {}
  */
 const mapStateToProps = (state, ownProps) => {
-    console.log("mapping", getSymbolSearchValue(state));
     return {
         searchValue: getSymbolSearchValue(state)
     };
@@ -130,9 +133,10 @@ const mapStateToProps = (state, ownProps) => {
  * @returns {}
  */
 const mapDispatchToProps = (dispatch, ownProps) => {
+    const { history } = ownProps;
     return {
         onSymbolSearch: event => {
-            dispatch(symbolSearch(event.target.value));
+            dispatch(symbolSearch(event.target.value, history));
         }
     };
 };

@@ -5,7 +5,6 @@ import WeirdCharacters from "../components/pages/WeirdCharacters";
 
 export default (
     <Switch>
-        <Route exact path="/" component={WeirdCharacters} />
-        <Route exact path="/weird" component={WeirdCharacters} />
+        <Route exact path="/:urlSearchValue?" component={WeirdCharacters} />
     </Switch>
 );
