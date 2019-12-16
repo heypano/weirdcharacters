@@ -33,6 +33,14 @@ const WeirdText = ({ children }) => {
                                 description += `${html} ${url}\n`;
                                 return (
                                     <span className="weird-code" key={i}>
+                                        {i == 0 && (
+                                            <MetaTags>
+                                                <meta
+                                                    property="og:url"
+                                                    content={url}
+                                                />
+                                            </MetaTags>
+                                        )}
                                         <a
                                             href={url}
                                             target="_blank"
@@ -49,6 +57,11 @@ const WeirdText = ({ children }) => {
                             })}
                             <MetaTags>
                                 <meta property="og:title" content={children} />
+                                <meta property="og:type" content="website" />
+                                <meta
+                                    property="og:image"
+                                    content="https://placekitten.com/500/500"
+                                />
                                 <meta
                                     property="og:description"
                                     content={description}
