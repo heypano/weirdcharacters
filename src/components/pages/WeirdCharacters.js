@@ -3,17 +3,20 @@ import { connect } from "react-redux";
 import { symbolSearch } from "../../redux/actions/navigation";
 import { getSymbolSearchValue } from "../../redux/selectors/navigation";
 import MetaTags from "react-meta-tags";
+import conversions from "../../util/textConversions";
 
-const weirds = ["γ⃣", "γ̸̨̲̙̪̗̠̬̑̅̃͑̿̾", "γ⃝", "γ҉", "γ̶", "γ̴", "γ̷", "γ̲", "γ̳", "γ̾", "γ͎", "γ͓̽"];
+const weirds = ["γ⃣", "γ⃝", "γ҉", "γ̶", "γ̴", "γ̷", "γ̲", "γ̳", "γ̾", "γ͎", "γ͓̽", "γ̸̨̲̙̪̗̠̬̑̅̃͑̿̾"];
 
 /**
  * Print a weird text
- * @param text
+ * @param children -- pass as children if simple case
+ * @param text -- pass text if not
  * @returns {*}
  * @constructor
  */
-const WeirdText = ({ children }) => {
-    const characters = [...children.toString()];
+const WeirdText = ({ children, htmlSafeText }) => {
+    const string = htmlSafeText || children.toString();
+    const characters = [...string];
     let description = "";
     return (
         <div className="weird-letter card">
@@ -21,9 +24,19 @@ const WeirdText = ({ children }) => {
                 <div className="card-title">
                     <div className="row">
                         <div className="col-3">
-                            <span className="weird-letter-content">
-                                {children}
-                            </span>
+                            {htmlSafeText && (
+                                <span
+                                    className="weird-letter-content"
+                                    dangerouslySetInnerHTML={{
+                                        __html: htmlSafeText
+                                    }}
+                                />
+                            )}
+                            {!htmlSafeText && (
+                                <span className="weird-letter-content">
+                                    {string}
+                                </span>
+                            )}
                         </div>
                         <div className="col weird-letter-parts">
                             {characters.map((char, i) => {
@@ -56,7 +69,7 @@ const WeirdText = ({ children }) => {
                                 );
                             })}
                             <MetaTags>
-                                <meta property="og:title" content={children} />
+                                <meta property="og:title" content={string} />
                                 <meta property="og:type" content="website" />
                                 <meta
                                     property="og:image"
@@ -135,11 +148,23 @@ const WeirdCharacters = props => {
                     <div className="weird-letters">
                         {!query &&
                             weirds.map((text, index) => (
-                                <WeirdText key={`char_${index}`}>
+                                <WeirdText key={`char_${index}`} text={text}>
                                     {text}
                                 </WeirdText>
                             ))}
-                        {query && <WeirdText>{query}</WeirdText>}
+                        {query && (
+                            <>
+                                <WeirdText>{query}</WeirdText>
+                                {Object.keys(conversions).map((key, index) => {
+                                    const htmlText = conversions[key](query);
+                                    return (
+                                        <WeirdText
+                                            htmlSafeText={htmlText}
+                                        ></WeirdText>
+                                    );
+                                })}
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
