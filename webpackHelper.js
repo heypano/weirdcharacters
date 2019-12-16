@@ -34,9 +34,10 @@ export function getEntryPoints(environment) {
  */
 export function getOutputData(environment) {
     const outputPath = environment === "PROD" ? ppath("docs") : ppath("src");
+    const publicPath = environment === "PROD" ? "/experiments/" : "/";
     return {
         path: outputPath,
-        publicPath: "/",
+        publicPath: publicPath,
         filename: "bundle.[name].[chunkhash].js"
     };
 }
