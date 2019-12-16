@@ -19,7 +19,7 @@ const WeirdText = ({ children }) => {
             <div className="card-body">
                 <div className="card-title">
                     <div className="row">
-                        <div className="col-2">
+                        <div className="col-3">
                             <span className="weird-letter-content">
                                 {children}
                             </span>
