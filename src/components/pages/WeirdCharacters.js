@@ -159,6 +159,7 @@ const WeirdCharacters = props => {
                                     const htmlText = conversions[key](query);
                                     return (
                                         <WeirdText
+                                            key={index}
                                             htmlSafeText={htmlText}
                                         ></WeirdText>
                                     );
