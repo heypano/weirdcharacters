@@ -16,7 +16,7 @@ const siteAddress = domain + ":" + port;
 setupMockDataPaths(server);
 
 server.use(compression());
-server.use(express.static("docs"));
+server.use("/experiments", express.static("docs"));
 
 server.get("*", function(req, res) {
     var file = getPath(distDir + entryFile);
