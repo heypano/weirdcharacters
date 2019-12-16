@@ -78,6 +78,8 @@ const WeirdCharacters = props => {
     const { searchValue, onSymbolSearch, match } = props;
     const { urlSearchValue } = match.params;
 
+    const query = searchValue || urlSearchValue;
+
     return (
         <div className="container">
             <div className="row">
@@ -99,18 +101,18 @@ const WeirdCharacters = props => {
                                 className="w-100"
                                 onChange={onSymbolSearch}
                                 type="text"
-                                defaultValue={urlSearchValue}
+                                defaultValue={query}
                             />
                         </div>
                     </div>
                     <div className="weird-letters">
-                        {!searchValue &&
+                        {!query &&
                             weirds.map((text, index) => (
                                 <WeirdText key={`char_${index}`}>
                                     {text}
                                 </WeirdText>
                             ))}
-                        {searchValue && <WeirdText>{searchValue}</WeirdText>}
+                        {query && <WeirdText>{query}</WeirdText>}
                     </div>
                 </div>
             </div>
