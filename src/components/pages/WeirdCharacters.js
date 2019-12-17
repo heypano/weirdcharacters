@@ -4,6 +4,7 @@ import { symbolSearch } from "../../redux/actions/navigation";
 import { getSymbolSearchValue } from "../../redux/selectors/navigation";
 import MetaTags from "react-meta-tags";
 import conversions from "../../util/textConversions";
+import { decode } from "../../util/text";
 
 const weirds = ["γ⃣", "γ⃝", "γ҉", "γ̶", "γ̴", "γ̷", "γ̲", "γ̳", "γ̾", "γ͎", "γ͓̽", "γ̸̨̲̙̪̗̠̬̑̅̃͑̿̾"];
 
@@ -15,8 +16,8 @@ const weirds = ["γ⃣", "γ⃝", "γ҉", "γ̶", "γ̴", "γ̷", "γ̲", "γ̳"
  * @constructor
  */
 const WeirdText = ({ children, htmlSafeText }) => {
-    const string = htmlSafeText || children.toString();
-    const characters = [...string];
+    const string = htmlSafeText || children;
+    const characters = [...decode(string)];
     let description = "";
     return (
         <div className="weird-letter card">
