@@ -1,7 +1,7 @@
 {
-    "name": "experiments",
+    "name": "weirdcharacters",
     "version": "1.0.0",
-    "description": "Pano's JS experiments",
+    "description": "Pano's JS weirdcharacters",
     "main": "index.js",
     "browserslist": "last 3 versions",
     "config": {
@@ -102,7 +102,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/heypano/experiments.git"
+        "url": "git+https://github.com/heypano/weirdcharacters.git"
     },
     "keywords": [
         "js",
@@ -114,7 +114,7 @@
     "author": "Pano Papadatos (www.heypano.com)",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/heypano/experiments/issues"
+        "url": "https://github.com/heypano/weirdcharacters/issues"
     },
-    "homepage": "https://github.com/heypano/experiments#readme"
+    "homepage": "https://github.com/heypano/weirdcharacters#readme"
 }

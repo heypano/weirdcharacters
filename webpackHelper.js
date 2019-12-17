@@ -39,7 +39,7 @@ export function getEntryPoints(environment) {
  */
 export function getOutputData(environment) {
     const outputPath = environment === "PROD" ? ppath("docs") : ppath("src");
-    const publicPath = environment === "PROD" ? "/experiments/" : "/";
+    const publicPath = environment === "PROD" ? "/weirdcharacters/" : "/";
     return {
         path: outputPath,
         publicPath: publicPath,
@@ -56,7 +56,7 @@ export function getSubdirectory(environment) {
     if (environment === "DEV") {
         return "";
     } else {
-        return "/experiments";
+        return "/weirdcharacters";
     }
 }
 

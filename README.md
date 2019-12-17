@@ -1,5 +1,5 @@
-# experiments
-Pano's JS experiments
+# weirdcharacters
+Pano's JS weirdcharacters
 
 ## Build Commands
 
