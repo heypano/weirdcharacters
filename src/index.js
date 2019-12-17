@@ -10,7 +10,7 @@ import "regenerator-runtime/runtime";
 
 render(
     <Provider store={store}>
-        <Router>{Routes}</Router>
+        <Router basename={window.myBasename}>{Routes}</Router>
     </Provider>,
     document.getElementById("app")
 );

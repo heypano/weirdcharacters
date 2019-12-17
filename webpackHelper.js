@@ -56,7 +56,7 @@ export function getSubdirectory(environment) {
     if (environment === "DEV") {
         return "";
     } else {
-        return "";
+        return "/experiment/";
     }
 }
 
@@ -98,7 +98,7 @@ export function getHTMLPlugins(environment) {
     const prodParams = {
         inject: true,
         thisEnvironmentType: "PROD", // This is a custom property available in our html via ejs
-        thisSubdirectory: getSubdirectory("PROD"),
+        myBasename: getSubdirectory("PROD"),
         buildTimestamp: new Date(),
         minify: {
             // Lots of options for minifying here

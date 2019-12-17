@@ -4,13 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="images/star.png" type="image/x-icon">
-        <title>Experiments by Pano</title>
-        <% if(htmlWebpackPlugin.options.thisEnvironmentType) { %>
         <script type="text/javascript">
             window.thisEnvironmentType =
-                "<%=htmlWebpackPlugin.options.environmentType%>";
+                "<%=htmlWebpackPlugin.options.thisEnvironmentType%>";
+            window.myBasename =
+                "<%=htmlWebpackPlugin.options.myBasename%>";
         </script>
-        <% } %>
     </head>
     <body>
         <div id="app" class="container"></div>
