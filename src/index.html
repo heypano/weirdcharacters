@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" href="images/star.png" type="image/x-icon">
+        <link rel="shortcut icon" href="<%= htmlWebpackPlugin.options.myBasename ? '/'+htmlWebpackPlugin.options.myBasename : '' %>/images/star.png" type="image/x-icon">
         <script type="text/javascript">
             window.thisEnvironmentType =
                 "<%=htmlWebpackPlugin.options.thisEnvironmentType%>";
