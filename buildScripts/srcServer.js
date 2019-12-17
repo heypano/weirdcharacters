@@ -28,6 +28,7 @@ setupMockDataPaths(server);
 
 server.use(connectHistory());
 server.use(devMiddleWare(compiler, middleWareSettings));
+server.use("/images", express.static("images"));
 
 server.get("*", function(req, res) {
     var file = getPath(srcDir + entryFile);
