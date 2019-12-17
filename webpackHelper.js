@@ -56,7 +56,7 @@ export function getSubdirectory(environment) {
     if (environment === "DEV") {
         return "";
     } else {
-        return "/experiment/";
+        return "/experiments";
     }
 }
 
