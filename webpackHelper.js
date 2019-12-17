@@ -70,7 +70,8 @@ export function getCopyPlugins(environment) {
     return [
         new CopyWebpackPlugin([
             // Put files here that need to be directly copied
-            { from: "src/images", to: "images" }
+            { from: "src/images", to: "images" },
+            { from: "CNAME", to: "CNAME" }
         ])
     ];
 }
