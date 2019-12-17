@@ -13,6 +13,11 @@ const pageList = [
         template: "src/index.html", // What is the source for this
         chunks: ["index"], // What bundle should be loaded here?
         filename: "index.html" // Where does the output go?
+    },
+    {
+        template: "src/index.html", // What is the source for this
+        chunks: ["index"], // What bundle should be loaded here?
+        filename: "404.html" // Where does the output go?
     }
 ];
 
