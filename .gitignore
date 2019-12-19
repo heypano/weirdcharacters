@@ -1,6 +1,11 @@
 # Webstorm Files
 .idea/
 
+# Password file
+buildScripts/esAuth.json
+# Codepoints data files (huge)
+buildScripts/codepoints
+
 # Database
 src/api/db.json
 
