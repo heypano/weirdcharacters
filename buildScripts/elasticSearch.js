@@ -1,4 +1,5 @@
 import path from "path";
+import fs from "fs";
 import { getAuthData } from "./esAuth";
 import { Client } from "@elastic/elasticsearch";
 import express from "express";
