@@ -6,6 +6,7 @@ import express from "express";
 import open from "open";
 import https from "https";
 const { username, password } = getAuthData();
+import { red } from "chalk";
 
 //https://www.robinwieruch.de/node-express-server-rest-api
 // https://medium.com/bb-tutorials-and-thoughts/how-to-write-production-ready-node-js-rest-api-javascript-version-db64d3941106
@@ -36,19 +37,23 @@ server.listen(port, function(err) {
     }
 });
 
-https
-    .createServer(
-        {
-            key: fs.readFileSync(keyLocation),
-            cert: fs.readFileSync(certLocation)
-        },
-        server
-    )
-    .listen(port, function(err) {
-        if (err) {
-            console.error(err);
-        }
-    });
+try {
+    https
+        .createServer(
+            {
+                key: fs.readFileSync(keyLocation),
+                cert: fs.readFileSync(certLocation)
+            },
+            server
+        )
+        .listen(port, function(err) {
+            if (err) {
+                console.error(err);
+            }
+        });
+} catch (error) {
+    console.error(red("Could not create https server"), error);
+}
 
 /**
  * Set up the API endpoints
