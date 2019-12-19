@@ -1,7 +1,14 @@
 import path from "path";
 import { getAuthData } from "./esAuth";
 import { Client } from "@elastic/elasticsearch";
+import express from "express";
+import open from "open";
 const { username, password } = getAuthData();
+
+//https://www.robinwieruch.de/node-express-server-rest-api
+// https://medium.com/bb-tutorials-and-thoughts/how-to-write-production-ready-node-js-rest-api-javascript-version-db64d3941106
+
+// ES client
 const client = new Client({
     node: {
         url: new URL("http://35.239.82.198/elasticsearch"),
@@ -12,6 +19,46 @@ const client = new Client({
         password: password
     }
 });
+// Express server
+const server = express();
+const domain = "http://localhost";
+const port = 3030;
+const firstPage = `${domain}:${port}/decimal/123`;
+
+setupAPIEndpoints(server);
+
+server.listen(port, function(err) {
+    if (err) {
+        console.error(err);
+    } else {
+        open(firstPage).then(() => {
+            console.log(`Opened ${firstPage}`);
+        });
+    }
+});
+
+/**
+ * Set up the API endpoints
+ * @param server
+ */
+function setupAPIEndpoints(server) {
+    server.get("/decimal/:decimalCode", function(req, res) {
+        try {
+            client
+                .search({
+                    df: "name",
+                    q: "alpha"
+                })
+                .then(response => {
+                    const { hits } = response.body;
+                    res.json(hits);
+                    console.log(JSON.stringify(hits, null, 2));
+                });
+        } catch (e) {
+            res.status(400).send("I dunno");
+        }
+    });
+}
 
 // cat data.json | jq -c '.[]  | .id = ._id | del (._id) | {"index": {"_index": "codepoints", "_type": "cats", "_id": .id}}, .' | curl  -XPOST ${username}:${password}@http://35.239.82.198/elasticsearch/_bulk --data-binary @-
 
