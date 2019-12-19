@@ -29,6 +29,12 @@ setupAPIEndpoints(server);
 const certLocation = "/opt/bitnami/apache2/conf/server.crt";
 const keyLocation = "/opt/bitnami/apache2/conf/server.key";
 
+server.listen(port, function(err) {
+    if (err) {
+        console.error(err);
+    }
+});
+
 https
     .createServer(
         {
@@ -40,7 +46,6 @@ https
     .listen(port, function(err) {
         if (err) {
             console.error(err);
-        } else {
         }
     });
 
