@@ -29,8 +29,8 @@ const httpPort = 3031;
 
 setupAPIEndpoints(server);
 
-const certLocation = "/opt/bitnami/apache2/conf/server.crt";
-const keyLocation = "/opt/bitnami/apache2/conf/server.key";
+const certLocation = "/opt/bitnami/apache2/conf/codepoints.heypano.com.crt";
+const keyLocation = "/opt/bitnami/apache2/conf/codepoints.heypano.com.key";
 
 server.listen(port, function(err) {
     if (err) {
