@@ -46,11 +46,13 @@ function setupAPIEndpoints(server) {
         try {
             client
                 .search({
-                    df: "name",
-                    q: "alpha"
+                    df: "code",
+                    q: req.params.decimalCode
                 })
                 .then(response => {
-                    const { hits } = response.body;
+                    const hits = response.body.hits.hits.map(
+                        hit => hit._source
+                    );
                     res.json(hits);
                     console.log(JSON.stringify(hits, null, 2));
                 });
