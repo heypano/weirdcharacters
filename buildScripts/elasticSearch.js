@@ -25,6 +25,7 @@ const client = new Client({
 // Express server
 const server = express();
 const port = 3030;
+const httpPort = 3031;
 
 setupAPIEndpoints(server);
 
@@ -46,7 +47,7 @@ try {
             },
             server
         )
-        .listen(port, function(err) {
+        .listen(httpPort, function(err) {
             if (err) {
                 console.error(err);
             }
