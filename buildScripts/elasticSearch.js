@@ -3,6 +3,7 @@ import { getAuthData } from "./esAuth";
 import { Client } from "@elastic/elasticsearch";
 import express from "express";
 import open from "open";
+import https from "https";
 const { username, password } = getAuthData();
 
 //https://www.robinwieruch.de/node-express-server-rest-api
@@ -21,21 +22,27 @@ const client = new Client({
 });
 // Express server
 const server = express();
-const domain = "http://localhost";
 const port = 3030;
-const firstPage = `${domain}:${port}/decimal/123`;
 
 setupAPIEndpoints(server);
 
-server.listen(port, function(err) {
-    if (err) {
-        console.error(err);
-    } else {
-        open(firstPage).then(() => {
-            console.log(`Opened ${firstPage}`);
-        });
-    }
-});
+const certLocation = "/opt/bitnami/apache2/conf/server.crt";
+const keyLocation = "/opt/bitnami/apache2/conf/server.key";
+
+https
+    .createServer(
+        {
+            key: fs.readFileSync(keyLocation),
+            cert: fs.readFileSync(certLocation)
+        },
+        server
+    )
+    .listen(port, function(err) {
+        if (err) {
+            console.error(err);
+        } else {
+        }
+    });
 
 /**
  * Set up the API endpoints
